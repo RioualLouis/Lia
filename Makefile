@@ -1,7 +1,7 @@
 CC = gcc
 OPTIONS = -Wall -ansi -pedantic
 DEBUG_OPTIONS =
-EXECUTABLE = neucnet
+EXECUTABLE = lia
 
 SOURCE = $(wildcard *.c)
 OBJETS = $(SOURCE:.c=.o)

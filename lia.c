@@ -1,20 +1,26 @@
 #include <stdio.h>
 
 #include "colors.h"
+#include "vector.h"
 
 void display_banner() {
-    printf("NeuCNet V.0.0.0\n\n");
+    printf("Lia V.0.0.0\n\n");
 
-    printf("%sWelcome to %sNeuCNet\n", BOLD, CYAN);
+    printf("%sWelcome to %sLia\n", BOLD, RED);
     printf("%sA neural network built in C\n\n", DEFAULT);
 
     printf("Available options:\n");
     printf("-h : Displays help.\n");
 }
 
-int neucnet_main(int argc, char *argv[]) {
+int lia_main(int argc, char *argv[]) {
 
     display_banner();
+
+    /* TESTING */
+    printf("\n%s --- TESTING ---%s\n", BOLD, DEFAULT);
+
+    test();
 
     return 0;
 }

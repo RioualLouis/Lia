@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#include "neucnet.h"
+#include "lia.h"
 
 int main(int argc, char *argv[]) {
-    return neucnet_main(argc, argv);
+    return lia_main(argc, argv);
 }
