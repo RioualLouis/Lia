@@ -20,6 +20,12 @@ double access(vector* vect, int i, int j) {
     return vect->data[i * vect->cols + j];
 }
 
+double update(vector* vect, int i, int j, double value) {
+    if (i > vect->rows - 1 || j > vect->cols - 1) FATAL_ERROR("Index out of bounds.");
+    vect->data[i * vect->cols + j] = value;
+    return value;
+}
+
 void free_vector(vector* vect) {
     free(vect->data);
     free(vect);
@@ -51,19 +57,17 @@ vector* dot(vector *A, vector *B) {
 
 vector* mat_mult(vector *A, vector *B) {
     vector* C;
-    int k, l, i_row, j_col;
+    int i, j, k, sum;
 
     if (A->cols != B->rows) FATAL_ERROR("Uncompatible dimensions.");
 
     C = create_vector(A->rows, B->cols);
 
-    for (k = 0 ; k < A->rows * B->cols ; k++) {
-        i_row =  (k / B->cols) * A->cols;
-        j_col = k - (k / B->cols) * B->cols;
-        C->data[k] = 0.0;
-
-        for (l = 0 ; l < A->cols ; l++) {
-            C->data[k] += A->data[i_row + l] * B->data[j_col + l * B->cols];
+    for (i = 0 ; i < A->rows ; i++) {
+        for (j = 0 ; j < B->cols ; j++) {
+            sum = 0;
+            for (k = 0 ; k < A->cols ; k++) sum += access(A, i, k) * access(B, k, j);
+            update(C, i, j, sum);
         }
     }
 
@@ -97,7 +101,7 @@ void test() {
     display_vect(A);
     display_vect(B);
 
-    C = add(A, A);
-    printf("Addition :\n");
+    C = mat_mult(A, B);
+    printf("Multi :\n");
     display_vect(C);
 }
