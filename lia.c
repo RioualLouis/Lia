@@ -1,7 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "colors.h"
 #include "vector.h"
+#include "network.h"
 
 void display_banner() {
     printf("Lia V.0.0.0\n\n");
@@ -13,14 +16,18 @@ void display_banner() {
     printf("-h : Displays help.\n");
 }
 
+
+
 int lia_main(int argc, char *argv[]) {
+
+    srand(time(NULL));          /* Initialiser la génération de nombres aléatoires */
 
     display_banner();
 
     /* TESTING */
     printf("\n%s --- TESTING ---%s\n", BOLD, DEFAULT);
 
-    test();
+    network_test();
 
     return 0;
 }
