@@ -55,4 +55,11 @@ dkms.conf
 *.dwo
 
 # Tool files
-project_ressources/
+project_ressources/bibliography.md
+
+# Project organisation files
+PLANNING.md
+docs/ROADMAP.md
+kickoff.py
+plan.json
+.kickoff-state.json
