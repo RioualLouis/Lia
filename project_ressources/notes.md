@@ -95,6 +95,16 @@ We can notice that we cannot add the matrix multiplication result to the bias ma
 
 ## Chapter 2: Coding
 
+### Environnement
+
+First things first, the C environnement the project will be developped in needs to be properly setup. Any code will be written on Emacs.
+
+#### Makefile
+
+The makefile contains 3 targets : a **default** target, a **debug** target and a **clean** target. It structure is mainly the same as the one from _Valisp_, with some adjustments regarding dependencies and targets.
+
+#### Framework
+
 ### Tools
 
 Before building any part of the network, we need to define the tools that the maths and the logic require, especially vectors.
