@@ -1,5 +1,5 @@
 #include "vendor/Unity/src/unity.h"
-#include "../activation.h" // À changer, inclure le chemin dans la compilation, a priori avec -I puis le chemin vers les includes
+#include "include/activation.h"
 
 void setUp() {} // Usage inconnue
 void tearDown() {} // Usage inconnue

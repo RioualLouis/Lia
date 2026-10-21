@@ -1,0 +1,6 @@
+test/TestActivation.c:18:test_sigmoid_true:PASS
+test/TestActivation.c:12:test_sigmoid_false:FAIL: Expected -1 Was 0.5
+
+-----------------------
+2 Tests 1 Failures 0 Ignored 
+FAIL
