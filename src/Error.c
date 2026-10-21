@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "colors.h"
-#include "error.h"
+#include "include/colors.h"
+#include "include/error.h"
 
 void fatal_error(char* file, int line, char* causes) {
     /* À utiliser pour le développement */

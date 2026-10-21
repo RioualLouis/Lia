@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "colors.h"
-#include "vector.h"
-#include "network.h"
+#include "include/colors.h"
+#include "include/vector.h"
+#include "include/network.h"
 
 void display_banner() {
     printf("Lia V.0.0.0\n\n");

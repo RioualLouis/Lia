@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "activation.h"
+#include "include/activation.h"
 
 void network_test() {
     printf("Sigmoid(1) = %.2f\n", sigmoid(1)); /* 0.73 */

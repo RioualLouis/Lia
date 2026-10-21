@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "vector.h"
-#include "error.h"
-#include "colors.h"
+#include "include/vector.h"
+#include "include/error.h"
+#include "include/colors.h"
 
 /* === CRUD (CREATE, READ, UPDATE, DELETE) =========================== */
 vector* create_vector(int n_rows, int n_cols) {

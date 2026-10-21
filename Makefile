@@ -5,7 +5,6 @@ EXECUTABLE = lia
 
 CLEANUP = rm -f
 MKDIR = mkdir -p
-DEPEND = -MM -MG -MF
 # For result files
 TARGET_EXTENSION = out
 
@@ -20,26 +19,24 @@ PATHSRC = src/
 PATHTEST = test/
 PATHBUILD = build/
 PATHOBJECT = build/object/
-PATHDEP = build/dependency/
 PATHRESULTS = build/result/
 
-BUILD_PATHS = $(PATHBUILD) $(PATHOBJECT) $(PATHDEP) $(PATHRESULTS)
+BUILD_PATHS = $(PATHBUILD) $(PATHOBJECT) $(PATHRESULTS)
 
 # Building
-SOURCE = $(wildcard *.c)
-OBJETS = $(SOURCE:.c=.o)
-DEPENDANCES = $(SOURCE:.c=.d)
+SOURCE = $(wildcard $(PATHSRC)*.c)
+OBJETS = $(patsubst $(PATHSRC)%.c, $(PATHOBJECT)%.o, $(SOURCE))
 
 # Testing
 SOURCETEST = $(wildcard $(PATHTEST)*.c)
-CFLAGS = -I. -I$(PATHUNITY) -I$(PATHSRC) -DTEST
+CFLAGS = -I. -I$(PATHUNITY) -I$(PATHSRC)
 
 RESULTS = $(patsubst $(PATHTEST)Test%.c, $(PATHRESULTS)Test%.txt, $(SOURCETEST))
 $(PATHRESULTS)%.txt: $(PATHBUILD)%.$(TARGET_EXTENSION)
 	-./$< > $@ 2>&1
 
 # Default target
-all: $(EXECUTABLE)
+all: $(EXECUTABLE) | $(PATHRESULTS)
 
 # Debug target
 # Gives advice on dirty things in the code
@@ -51,12 +48,12 @@ debug: clean $(EXECUTABLE)
 clean:
 	$(CLEANUP) $(EXECUTABLE)
 	$(CLEANUP) $(PATHOBJECT)*.o
-	$(CLEANUP) $(PATHDEP)*.d
+	$(CLEANUP) $(PATHOBJECT)*.d
 	$(CLEANUP) $(PATHBUILD)*.$(TARGET_EXTENSION)
 	$(CLEANUP) $(PATHRESULTS)*.txt
 
 # Test target
-test: $(BUILD_PATHS) $(RESULTS)
+test: $(RESULTS)
 	@echo "-----------------------\nIGNORES\n-----------------------"
 	@echo `grep -s IGNORE $(PATHRESULTS)*.txt`
 	@echo "-----------------------\nFAILURES\n-----------------------"
@@ -64,37 +61,30 @@ test: $(BUILD_PATHS) $(RESULTS)
 	@echo "\nDONE"
 
 # Creating test executable
-$(PATHBUILD)Test%.$(TARGET_EXTENSION): $(PATHOBJECT)Test%.o $(PATHOBJECT)unity.o
+$(PATHBUILD)Test%.$(TARGET_EXTENSION): $(PATHOBJECT)Test%.o $(PATHOBJECT)%.o $(PATHOBJECT)unity.o | $(PATHBUILD)
 	$(CC) $(DEBUG_OPTIONS) $(OPTIONS) -o $@ $(filter %.o, $^) $(LDLIBS)
 
 # Creating object files
-$(PATHOBJECT)%.o:: $(PATHTEST)%.c
-	$(CC) $(DEBUG_OPTIONS) $(OPTIONS) -c $(CFLAGS) $< -o $@
+$(PATHOBJECT)%.o:: $(PATHTEST)%.c | $(PATHOBJECT)
+	$(CC) $(DEBUG_OPTIONS) $(OPTIONS) -c -MMD -MP $(CFLAGS) $< -o $@
 
-$(PATHOBJECT)%.o:: $(PATHSRC)%.c
-	$(CC) $(DEBUG_OPTIONS) $(OPTIONS) -c $(CFLAGS) $< -o $@
+$(PATHOBJECT)%.o:: $(PATHSRC)%.c | $(PATHOBJECT)
+	$(CC) $(DEBUG_OPTIONS) $(OPTIONS) -c -MMD -MP $(CFLAGS) $< -o $@
 
-$(PATHOBJECT)%.o:: $(PATHUNITY)%.c $(PATHUNITY)%.h
-	$(CC) $(DEBUG_OPTIONS) $(OPTIONS) -c $(CFLAGS) $< -o $@
-
-# Creating dependencies
-$(PATHDEP)%.d:: $(PATHTEST)%.c
-	$(DEPEND) $@ $<
+$(PATHOBJECT)%.o:: $(PATHUNITY)%.c $(PATHUNITY)%.h | $(PATHOBJECT)
+	$(CC) $(DEBUG_OPTIONS) $(OPTIONS) -c -MMD -MP $(CFLAGS) $< -o $@
 
 # Creating Executable (other than test)
 $(EXECUTABLE): $(OBJETS)
-	$(CC) $(DEBUG_OPTIONS) $(OPTIONS) $(OBJETS) -o $(EXECUTABLE) $(LDLIBS)
-
-%.o: %.c
-	$(CC) $(DEBUG_OPTIONS) $(OPTIONS) -MMD -c $<
+	$(CC) $(DEBUG_OPTIONS) $(OPTIONS) $^ -o $@ $(LDLIBS)
 
 # Create directories if they don't exist
 $(BUILD_PATHS):
 	$(MKDIR) $@
 
 .PRECIOUS: $(PATHBUILD)Test%.$(TARGET_EXTENSION)
-.PRECIOUS: $(PATHDEP)%.d
 .PRECIOUS: $(PATHOBJECT)%.o
 .PRECIOUS: $(PATHRESULTS)%.txt
 
--include $(DEPENDANCES) # Include .d files into Makefile
+# Include .d files into Makefile
+-include $(wildcard $(PATHOBJECT)*.d)
