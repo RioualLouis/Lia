@@ -15,5 +15,4 @@
 
    \return The value returned by lia_main().
  */
-int main(int argc, char *argv[])
-{ return lia_main(argc, argv); }
+int main(int argc, char *argv[]) { return lia_main(argc, argv); }

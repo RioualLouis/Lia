@@ -11,7 +11,7 @@ TARGET_EXTENSION = out
 LDLIBS = -lm
 
 # Avoid launching every targets that are not files
-.PHONY: all debug clean test
+.PHONY: all debug clean test format format-check analyse
 
 # Paths
 PATHUNITY = test/vendor/Unity/src/
@@ -46,6 +46,10 @@ all: $(EXECUTABLE) | $(PATHRESULTS)
 debug: DEBUG_OPTIONS = -fsanitize=address -g
 # Depends on clean to avoid object related issues
 debug: clean $(EXECUTABLE)
+
+# Analyze target - static analysis, debug without running
+analyze: clean
+	scan-build --status-bugs $(MAKE) CC=clang $(EXECUTABLE)
 
 # Clean target
 clean:
