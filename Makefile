@@ -31,6 +31,9 @@ OBJETS = $(patsubst $(PATHSRC)%.c, $(PATHOBJECT)%.o, $(SOURCE))
 SOURCETEST = $(wildcard $(PATHTEST)*.c)
 CFLAGS = -I. -I$(PATHUNITY) -I$(PATHSRC)
 
+# Formating
+FORMAT = $(filter-out $(PATHUNITY)%, $(wildcard $(PATHSRC)*.[c] $(PATHTEST)*.[c]))
+
 RESULTS = $(patsubst $(PATHTEST)Test%.c, $(PATHRESULTS)Test%.txt, $(SOURCETEST))
 $(PATHRESULTS)%.txt: $(PATHBUILD)%.$(TARGET_EXTENSION)
 	-./$< > $@ 2>&1
@@ -59,6 +62,13 @@ test: $(RESULTS)
 	@echo "-----------------------\nFAILURES\n-----------------------"
 	@echo `grep -s FAIL $(PATHRESULTS)*.txt`
 	@echo "\nDONE"
+
+# Format targets - Used to format all files using clang (check is used by CI)
+format:
+	clang-format -i $(FORMAT)
+
+format-check:
+	clang-format --dry-run --werror $(FORMAT)
 
 # Creating test executable
 $(PATHBUILD)Test%.$(TARGET_EXTENSION): $(PATHOBJECT)Test%.o $(PATHOBJECT)%.o $(PATHOBJECT)unity.o | $(PATHBUILD)
