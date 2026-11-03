@@ -1,0 +1,42 @@
+\doxysection{src/\+Activation.c File Reference}
+\hypertarget{Activation_8c}{}\label{Activation_8c}\index{src/Activation.c@{src/Activation.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include "{}include/activation.\+h"{}}\newline
+Include dependency graph for Activation.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{Activation_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{Activation_8c_aa924e8c95bc498ebc9f8e08a0c491e7c}{sigmoid}} (double x)
+\begin{DoxyCompactList}\small\item\em Computes the sigmoid of a value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the activation functions of the network. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Activation_8c_aa924e8c95bc498ebc9f8e08a0c491e7c}\label{Activation_8c_aa924e8c95bc498ebc9f8e08a0c491e7c} 
+\index{Activation.c@{Activation.c}!sigmoid@{sigmoid}}
+\index{sigmoid@{sigmoid}!Activation.c@{Activation.c}}
+\doxysubsubsection{\texorpdfstring{sigmoid()}{sigmoid()}}
+{\footnotesize\ttfamily double sigmoid (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption})}
+
+
+
+Computes the sigmoid of a value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of 1 / (1 + exp(-\/x)), between 0 and 1. 
+\end{DoxyReturn}

@@ -1,0 +1,54 @@
+\message{ !name(vector_8h_source.tex)}
+\message{ !name(vector_8h_source.tex) !offset(-2) }
+\doxysection{vector.\+h}
+\hypertarget{vector_8h_source}{}\label{vector_8h_source}\index{include/vector.h@{include/vector.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VECTOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VECTOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvect}{vect}}\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keywordtype}{int}\ rows;}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keywordtype}{int}\ cols;}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keywordtype}{double}*\ data;}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{int}\ last\_available;}
+\DoxyCodeLine{00009\ \}\ \mbox{\hyperlink{structvect}{vector}};}
+\DoxyCodeLine{00010\ \textcolor{comment}{/*\ Les\ vecteurs\ sont\ construits\ comme\ une\ liste\ unidimmensionnelle\ de\ doubles.\ Pour\ accéder\ à\ l'élément\ [i][j],\ il\ faut\ demander\ vector.data[i\ *\ vector.cols\ +\ j].\ */}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{/*\ ===\ CRUD\ ===\ */}}
+\DoxyCodeLine{00013\ \mbox{\hyperlink{structvect}{vector}}*\ create\_vector(\textcolor{keywordtype}{int}\ n\_rows,\ \textcolor{keywordtype}{int}\ n\_cols);}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \mbox{\hyperlink{structvect}{vector}}*\ create\_random\_vect(\textcolor{keywordtype}{int}\ n\_rows,\ \textcolor{keywordtype}{int}\ n\_cols,\ \textcolor{keywordtype}{int}\ range);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{double}\ access(\mbox{\hyperlink{structvect}{vector}}*\ \mbox{\hyperlink{structvect}{vect}},\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ add\_sample(\mbox{\hyperlink{structvect}{vector}}*\ \mbox{\hyperlink{structvect}{vect}},\ \textcolor{keywordtype}{double}*\ sample,\ \textcolor{keywordtype}{int}\ features);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{double}\ update(\mbox{\hyperlink{structvect}{vector}}*\ \mbox{\hyperlink{structvect}{vect}},\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keywordtype}{double}\ value);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ free\_vector(\mbox{\hyperlink{structvect}{vector}}*\ \mbox{\hyperlink{structvect}{vect}});}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{/*\ ===\ OPÉRATIONS\ ===\ */}}
+\DoxyCodeLine{00026\ \mbox{\hyperlink{structvect}{vector}}*\ t(\mbox{\hyperlink{structvect}{vector}}*\ A);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \mbox{\hyperlink{structvect}{vector}}*\ add(\mbox{\hyperlink{structvect}{vector}}\ *A,\ \mbox{\hyperlink{structvect}{vector}}\ *B);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \mbox{\hyperlink{structvect}{vector}}*\ dot(\mbox{\hyperlink{structvect}{vector}}\ *A,\ \mbox{\hyperlink{structvect}{vector}}\ *B);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \mbox{\hyperlink{structvect}{vector}}*\ mat\_mult(\mbox{\hyperlink{structvect}{vector}}\ *A,\ \mbox{\hyperlink{structvect}{vector}}\ *B);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ map(\mbox{\hyperlink{structvect}{vector}}\ *A,\ \textcolor{keywordtype}{double}\ (*f)(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{/*\ ===\ AFFICHAGE\ ===\ */}}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ display\_vect(\mbox{\hyperlink{structvect}{vector}}\ *\mbox{\hyperlink{structvect}{vect}});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}\ display\_raw(\mbox{\hyperlink{structvect}{vector}}\ *\mbox{\hyperlink{structvect}{vect}});}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{/*\ ===\ TESTING\ ===\ */}}
+\DoxyCodeLine{00042\ \textcolor{comment}{/*\ void\ test();\ */}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
+
+\message{ !name(vector_8h_source.tex) !offset(-54) }

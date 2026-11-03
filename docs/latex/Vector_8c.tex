@@ -1,0 +1,295 @@
+\doxysection{src/\+Vector.c File Reference}
+\hypertarget{Vector_8c}{}\label{Vector_8c}\index{src/Vector.c@{src/Vector.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}include/vector.\+h"{}}\newline
+{\ttfamily \#include "{}include/error.\+h"{}}\newline
+{\ttfamily \#include "{}include/colors.\+h"{}}\newline
+Include dependency graph for Vector.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Vector_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Vector_8c_a612270d2e330a02703b49c4db49ee6ad}{create\+\_\+vector}} (int n\+\_\+rows, int n\+\_\+cols)
+\begin{DoxyCompactList}\small\item\em Create a new vector object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Vector_8c_ac04b85b7525141cd064fb5e17ea9739d}{create\+\_\+random\+\_\+vect}} (int n\+\_\+rows, int n\+\_\+cols, int range)
+\begin{DoxyCompactList}\small\item\em Creates a randomly filled vector of specified dimensions. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{Vector_8c_a2b6eddb89d7099de9d7c618f72e05734}{access}} (\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structvect}{vect}}, int i, int j)
+\begin{DoxyCompactList}\small\item\em Returns the value at row i and column j of a vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Vector_8c_acbe54ab92b43295ea65c764d312c80a3}{add\+\_\+sample}} (\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structvect}{vect}}, double \texorpdfstring{$\ast$}{*}sample, int features)
+\begin{DoxyCompactList}\small\item\em Inserts a sample at the next free position of a vector. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{Vector_8c_a24a18038ead833a3c70b14dba1c75d06}{update}} (\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structvect}{vect}}, int i, int j, double value)
+\begin{DoxyCompactList}\small\item\em Changes the value at row i and column j of a vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Vector_8c_af0de3b3fb6ab341b1f6389cfcc37cbe7}{free\+\_\+vector}} (\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structvect}{vect}})
+\begin{DoxyCompactList}\small\item\em Frees the memory of a vector and of its data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Vector_8c_a202c408ff96f967d0ad2c13b107dde85}{t}} (\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}A)
+\begin{DoxyCompactList}\small\item\em Creates the transpose of a vector. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Vector_8c_a9c3bb47ba5030c0011a758c65787e27b}{add}} (\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}A, \mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}B)
+\begin{DoxyCompactList}\small\item\em Adds two vectors element by element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Vector_8c_a6473cd22440b4506a4b07608009e2de0}{dot}} (\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}A, \mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}B)
+\begin{DoxyCompactList}\small\item\em Multiplies two vectors element by element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Vector_8c_a61f24a1ffe85475aa79d7f794fa7a663}{mat\+\_\+mult}} (\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}A, \mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}B)
+\begin{DoxyCompactList}\small\item\em Computes the matrix product of two vectors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Vector_8c_a1455acdfe92f3f5c9b37409e6cc27a7a}{map}} (\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}A, double(\texorpdfstring{$\ast$}{*}f)(double))
+\begin{DoxyCompactList}\small\item\em Applies a function to every element of a vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Vector_8c_a9de6d141f9e118996249b864d86d8661}{display\+\_\+vect}} (\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structvect}{vect}})
+\begin{DoxyCompactList}\small\item\em Displays a vector row by row. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Vector_8c_a4c4932fdaaf2a05a790c04f0af939c34}{display\+\_\+raw}} (\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structvect}{vect}})
+\begin{DoxyCompactList}\small\item\em Displays all the values of a vector on one line, between brackets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains everything related to vector/matrix (operations, construction, ..) 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Vector_8c_a2b6eddb89d7099de9d7c618f72e05734}\label{Vector_8c_a2b6eddb89d7099de9d7c618f72e05734} 
+\index{Vector.c@{Vector.c}!access@{access}}
+\index{access@{access}!Vector.c@{Vector.c}}
+\doxysubsubsection{\texorpdfstring{access()}{access()}}
+{\footnotesize\ttfamily double access (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}}]{vect,  }\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+
+
+Returns the value at row i and column j of a vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & The vector to read. \\
+\hline
+{\em i} & Row index. \\
+\hline
+{\em j} & Column index.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value at position (i, j).
+\end{DoxyReturn}
+Stops the program if the indexes are out of bounds. \Hypertarget{Vector_8c_a9c3bb47ba5030c0011a758c65787e27b}\label{Vector_8c_a9c3bb47ba5030c0011a758c65787e27b} 
+\index{Vector.c@{Vector.c}!add@{add}}
+\index{add@{add}!Vector.c@{Vector.c}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*} add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}}]{A,  }\item[{\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}}]{B }\end{DoxyParamCaption})}
+
+
+
+Adds two vectors element by element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & First vector. \\
+\hline
+{\em B} & Second vector.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the new vector A + B.
+\end{DoxyReturn}
+Stops the program if the dimensions are different. \Hypertarget{Vector_8c_acbe54ab92b43295ea65c764d312c80a3}\label{Vector_8c_acbe54ab92b43295ea65c764d312c80a3} 
+\index{Vector.c@{Vector.c}!add\_sample@{add\_sample}}
+\index{add\_sample@{add\_sample}!Vector.c@{Vector.c}}
+\doxysubsubsection{\texorpdfstring{add\_sample()}{add\_sample()}}
+{\footnotesize\ttfamily void add\+\_\+sample (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}}]{vect,  }\item[{double \texorpdfstring{$\ast$}{*}}]{sample,  }\item[{int}]{features }\end{DoxyParamCaption})}
+
+
+
+Inserts a sample at the next free position of a vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & The vector to fill. \\
+\hline
+{\em sample} & Array of values to insert. \\
+\hline
+{\em features} & Number of values in the sample.\\
+\hline
+\end{DoxyParams}
+Stops the program if there is not enough space. Displays a warning if features is different from the number of columns. \Hypertarget{Vector_8c_ac04b85b7525141cd064fb5e17ea9739d}\label{Vector_8c_ac04b85b7525141cd064fb5e17ea9739d} 
+\index{Vector.c@{Vector.c}!create\_random\_vect@{create\_random\_vect}}
+\index{create\_random\_vect@{create\_random\_vect}!Vector.c@{Vector.c}}
+\doxysubsubsection{\texorpdfstring{create\_random\_vect()}{create\_random\_vect()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*} create\+\_\+random\+\_\+vect (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+rows,  }\item[{int}]{n\+\_\+cols,  }\item[{int}]{range }\end{DoxyParamCaption})}
+
+
+
+Creates a randomly filled vector of specified dimensions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+rows} & Number of rows of the vector. \\
+\hline
+{\em n\+\_\+cols} & Number of columns of the vector. \\
+\hline
+{\em range} & upper limit of the number generation interval.\\
+\hline
+\end{DoxyParams}
+Similar to \doxylink{Vector_8c_a612270d2e330a02703b49c4db49ee6ad}{create\+\_\+vector()}, but creates a vector filled with random values, taking a range for the random number generation into account. Numbers will be generated between 0 and range-\/1. To free with \doxylink{Vector_8c_af0de3b3fb6ab341b1f6389cfcc37cbe7}{free\+\_\+vector()}. \Hypertarget{Vector_8c_a612270d2e330a02703b49c4db49ee6ad}\label{Vector_8c_a612270d2e330a02703b49c4db49ee6ad} 
+\index{Vector.c@{Vector.c}!create\_vector@{create\_vector}}
+\index{create\_vector@{create\_vector}!Vector.c@{Vector.c}}
+\doxysubsubsection{\texorpdfstring{create\_vector()}{create\_vector()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*} create\+\_\+vector (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+rows,  }\item[{int}]{n\+\_\+cols }\end{DoxyParamCaption})}
+
+
+
+Create a new vector object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+rows} & Number of rows of the vector. \\
+\hline
+{\em n\+\_\+cols} & Number of columns of the vector.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the new vector. To free with \doxylink{Vector_8c_af0de3b3fb6ab341b1f6389cfcc37cbe7}{free\+\_\+vector()}. 
+\end{DoxyReturn}
+\Hypertarget{Vector_8c_a4c4932fdaaf2a05a790c04f0af939c34}\label{Vector_8c_a4c4932fdaaf2a05a790c04f0af939c34} 
+\index{Vector.c@{Vector.c}!display\_raw@{display\_raw}}
+\index{display\_raw@{display\_raw}!Vector.c@{Vector.c}}
+\doxysubsubsection{\texorpdfstring{display\_raw()}{display\_raw()}}
+{\footnotesize\ttfamily void display\+\_\+raw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}}]{vect }\end{DoxyParamCaption})}
+
+
+
+Displays all the values of a vector on one line, between brackets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & The vector to display.\\
+\hline
+\end{DoxyParams}
+For debugging purposes. \Hypertarget{Vector_8c_a9de6d141f9e118996249b864d86d8661}\label{Vector_8c_a9de6d141f9e118996249b864d86d8661} 
+\index{Vector.c@{Vector.c}!display\_vect@{display\_vect}}
+\index{display\_vect@{display\_vect}!Vector.c@{Vector.c}}
+\doxysubsubsection{\texorpdfstring{display\_vect()}{display\_vect()}}
+{\footnotesize\ttfamily void display\+\_\+vect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}}]{vect }\end{DoxyParamCaption})}
+
+
+
+Displays a vector row by row. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & The vector to display. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Vector_8c_a6473cd22440b4506a4b07608009e2de0}\label{Vector_8c_a6473cd22440b4506a4b07608009e2de0} 
+\index{Vector.c@{Vector.c}!dot@{dot}}
+\index{dot@{dot}!Vector.c@{Vector.c}}
+\doxysubsubsection{\texorpdfstring{dot()}{dot()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*} dot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}}]{A,  }\item[{\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}}]{B }\end{DoxyParamCaption})}
+
+
+
+Multiplies two vectors element by element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & First vector. \\
+\hline
+{\em B} & Second vector.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the new vector.
+\end{DoxyReturn}
+Stops the program if the dimensions are different. \Hypertarget{Vector_8c_af0de3b3fb6ab341b1f6389cfcc37cbe7}\label{Vector_8c_af0de3b3fb6ab341b1f6389cfcc37cbe7} 
+\index{Vector.c@{Vector.c}!free\_vector@{free\_vector}}
+\index{free\_vector@{free\_vector}!Vector.c@{Vector.c}}
+\doxysubsubsection{\texorpdfstring{free\_vector()}{free\_vector()}}
+{\footnotesize\ttfamily void free\+\_\+vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}}]{vect }\end{DoxyParamCaption})}
+
+
+
+Frees the memory of a vector and of its data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vect} & The vector to free. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Vector_8c_a1455acdfe92f3f5c9b37409e6cc27a7a}\label{Vector_8c_a1455acdfe92f3f5c9b37409e6cc27a7a} 
+\index{Vector.c@{Vector.c}!map@{map}}
+\index{map@{map}!Vector.c@{Vector.c}}
+\doxysubsubsection{\texorpdfstring{map()}{map()}}
+{\footnotesize\ttfamily void map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}}]{A,  }\item[{double(\texorpdfstring{$\ast$}{*})(double)}]{f }\end{DoxyParamCaption})}
+
+
+
+Applies a function to every element of a vector. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em A} & The vector to modify. \\
+\hline
+ & {\em f} & The function to apply.\\
+\hline
+\end{DoxyParams}
+Modifies the vector in place. \Hypertarget{Vector_8c_a61f24a1ffe85475aa79d7f794fa7a663}\label{Vector_8c_a61f24a1ffe85475aa79d7f794fa7a663} 
+\index{Vector.c@{Vector.c}!mat\_mult@{mat\_mult}}
+\index{mat\_mult@{mat\_mult}!Vector.c@{Vector.c}}
+\doxysubsubsection{\texorpdfstring{mat\_mult()}{mat\_mult()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*} mat\+\_\+mult (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}}]{A,  }\item[{\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}}]{B }\end{DoxyParamCaption})}
+
+
+
+Computes the matrix product of two vectors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & Left vector. \\
+\hline
+{\em B} & Right vector.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the new vector A x B.
+\end{DoxyReturn}
+Stops the program if the number of columns of A is different from the number of rows of B. \Hypertarget{Vector_8c_a202c408ff96f967d0ad2c13b107dde85}\label{Vector_8c_a202c408ff96f967d0ad2c13b107dde85} 
+\index{Vector.c@{Vector.c}!t@{t}}
+\index{t@{t}!Vector.c@{Vector.c}}
+\doxysubsubsection{\texorpdfstring{t()}{t()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*} t (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}}]{A }\end{DoxyParamCaption})}
+
+
+
+Creates the transpose of a vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The vector to transpose.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the new transposed vector. 
+\end{DoxyReturn}
+\Hypertarget{Vector_8c_a24a18038ead833a3c70b14dba1c75d06}\label{Vector_8c_a24a18038ead833a3c70b14dba1c75d06} 
+\index{Vector.c@{Vector.c}!update@{update}}
+\index{update@{update}!Vector.c@{Vector.c}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily double update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structvect}{vector}} \texorpdfstring{$\ast$}{*}}]{vect,  }\item[{int}]{i,  }\item[{int}]{j,  }\item[{double}]{value }\end{DoxyParamCaption})}
+
+
+
+Changes the value at row i and column j of a vector. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em vect} & The vector to modify. \\
+\hline
+ & {\em i} & Row index. \\
+\hline
+ & {\em j} & Column index. \\
+\hline
+ & {\em value} & The new value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new value.
+\end{DoxyReturn}
+Stops the program if the indexes are out of bounds. 
