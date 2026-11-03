@@ -11,7 +11,7 @@ TARGET_EXTENSION = out
 LDLIBS = -lm
 
 # Avoid launching every targets that are not files
-.PHONY: all debug clean test
+.PHONY: all debug clean test format format-check analyse
 
 # Paths
 PATHUNITY = test/vendor/Unity/src/
@@ -31,6 +31,9 @@ OBJETS = $(patsubst $(PATHSRC)%.c, $(PATHOBJECT)%.o, $(SOURCE))
 SOURCETEST = $(wildcard $(PATHTEST)*.c)
 CFLAGS = -I. -I$(PATHUNITY) -I$(PATHSRC)
 
+# Formating
+FORMAT = $(filter-out $(PATHUNITY)%, $(wildcard $(PATHSRC)*.[c] $(PATHTEST)*.[c]))
+
 RESULTS = $(patsubst $(PATHTEST)Test%.c, $(PATHRESULTS)Test%.txt, $(SOURCETEST))
 $(PATHRESULTS)%.txt: $(PATHBUILD)%.$(TARGET_EXTENSION)
 	-./$< > $@ 2>&1
@@ -43,6 +46,10 @@ all: $(EXECUTABLE) | $(PATHRESULTS)
 debug: DEBUG_OPTIONS = -fsanitize=address -g
 # Depends on clean to avoid object related issues
 debug: clean $(EXECUTABLE)
+
+# Analyze target - static analysis, debug without running
+analyze: clean
+	scan-build --status-bugs $(MAKE) CC=clang $(EXECUTABLE)
 
 # Clean target
 clean:
@@ -59,6 +66,13 @@ test: $(RESULTS)
 	@echo "-----------------------\nFAILURES\n-----------------------"
 	@echo `grep -s FAIL $(PATHRESULTS)*.txt`
 	@echo "\nDONE"
+
+# Format targets - Used to format all files using clang (check is used by CI)
+format:
+	clang-format -i $(FORMAT)
+
+format-check:
+	clang-format --dry-run --werror $(FORMAT)
 
 # Creating test executable
 $(PATHBUILD)Test%.$(TARGET_EXTENSION): $(PATHOBJECT)Test%.o $(PATHOBJECT)%.o $(PATHOBJECT)unity.o | $(PATHBUILD)

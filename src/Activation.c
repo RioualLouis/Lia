@@ -3,24 +3,24 @@
    Contains the activation functions of the network.
 */
 
-#include <stdio.h>
-#include <math.h>
-
 #include "include/activation.h"
 
-    /*!
-       \brief Computes the sigmoid of a value.
+#include <math.h>
+#include <stdio.h>
 
-       \param x Input value.
+/*!
+   \brief Computes the sigmoid of a value.
 
-       \return The result of 1 / (1 + exp(-x)), between 0 and 1.
-     */
+   \param x Input value.
+
+   \return The result of 1 / (1 + exp(-x)), between 0 and 1.
+ */
 double sigmoid(double x) {
-    double power;
-    double expo;
+  double power;
+  double expo;
 
-    power = -1 * x;
-    expo = exp(power);
+  power = -1 * x;
+  expo = exp(power);
 
-    return 1 / (1 + expo);
+  return 1 / (1 + expo);
 }

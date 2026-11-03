@@ -8,11 +8,11 @@
 
 #include "include/activation.h"
 
-    /*!
-       \brief A first network implementation.
-     */
+/*!
+   \brief A first network implementation.
+ */
 void network_test() {
-    printf("Sigmoid(1) = %.2f\n", sigmoid(1)); /* 0.73 */
+  printf("Sigmoid(1) = %.2f\n", sigmoid(1)); /* 0.73 */
 
-    printf("Sigmoid(0) = %.2f\n", sigmoid(0)); /* 0.5 */
+  printf("Sigmoid(0) = %.2f\n", sigmoid(0)); /* 0.5 */
 }
