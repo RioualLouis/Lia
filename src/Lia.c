@@ -14,7 +14,8 @@
 /*!
    \brief Displays the version, the welcome message and the available options.
  */
-void display_banner() {
+void display_banner()
+{
   printf("Lia V.0.0.0\n\n");
 
   printf("%sWelcome to %sLia\n", BOLD, RED);
