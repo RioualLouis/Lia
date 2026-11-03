@@ -1,4 +1,7 @@
-/* Contiendra tout ce qui touche aux vecteurs/matrices (operations, construction, etc.) */
+/*! \file Vector.c
+
+   Contains everything related to vector/matrix (operations, construction, ..)
+*/
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -7,6 +10,15 @@
 #include "include/colors.h"
 
 /* === CRUD (CREATE, READ, UPDATE, DELETE) =========================== */
+
+/*!
+       \brief Create a new vector object.
+
+       \param n_rows Number of rows of the vector.
+       \param n_cols Number of columns of the vector.
+
+       \return A pointer to the new vector. To free with free_vector().
+     */
 vector* create_vector(int n_rows, int n_cols) {
     vector* pvect = malloc(sizeof(vector));
     pvect->rows = n_rows;
@@ -16,6 +28,15 @@ vector* create_vector(int n_rows, int n_cols) {
     return pvect;
 }
 
+/*!
+      \brief Creates a randomly filled vector of specified dimensions.
+
+      \param n_rows Number of rows of the vector.
+      \param n_cols Number of columns of the vector.
+      \param range upper limit of the number generation interval.
+
+      Similar to create_vector(), but creates a vector filled with random values, taking a range for the random number generation into account. Numbers will be generated between 0 and range-1. To free with free_vector().
+     */
 vector* create_random_vect(int n_rows, int n_cols, int range) {
     vector* pvect = create_vector(n_rows, n_cols);
     int k;
@@ -28,12 +49,33 @@ vector* create_random_vect(int n_rows, int n_cols, int range) {
     return pvect;
 }
 
+    /*!
+       \brief Returns the value at row i and column j of a vector.
+
+       \param vect The vector to read.
+       \param i Row index.
+       \param j Column index.
+
+       \return The value at position (i, j).
+
+       Stops the program if the indexes are out of bounds.
+     */
 double access(vector* vect, int i, int j) {
     if (i > vect->rows - 1 || j > vect->cols - 1) FATAL_ERROR("Index out of bounds.");
 
     return vect->data[i * vect->cols + j];
 }
 
+    /*!
+       \brief Inserts a sample at the next free position of a vector.
+
+       \param vect The vector to fill.
+       \param sample Array of values to insert.
+       \param features Number of values in the sample.
+
+       Stops the program if there is not enough space.
+       Displays a warning if features is different from the number of columns.
+     */
 void add_sample(vector* vect, double* sample, int features) {
     int i;
     int j;
@@ -51,12 +93,29 @@ void add_sample(vector* vect, double* sample, int features) {
     vect->last_available += features;
 }
 
+    /*!
+       \brief Changes the value at row i and column j of a vector.
+
+       \param[in,out] vect The vector to modify.
+       \param i Row index.
+       \param j Column index.
+       \param value The new value.
+
+       \return The new value.
+
+       Stops the program if the indexes are out of bounds.
+     */
 double update(vector* vect, int i, int j, double value) {
     if (i > vect->rows - 1 || j > vect->cols - 1) FATAL_ERROR("Index out of bounds.");
     vect->data[i * vect->cols + j] = value;
     return value;
 }
 
+    /*!
+       \brief Frees the memory of a vector and of its data.
+
+       \param vect The vector to free.
+     */
 void free_vector(vector* vect) {
     free(vect->data);
     free(vect);
@@ -64,6 +123,14 @@ void free_vector(vector* vect) {
 
 
 /* === OPÉRATIONS ============================================= */
+
+    /*!
+       \brief Creates the transpose of a vector.
+
+       \param A The vector to transpose.
+
+       \return A pointer to the new transposed vector.
+     */
 vector* t(vector* A) {
     /* Problem ? */
     vector* tA = create_vector(A->cols, A->rows);
@@ -85,6 +152,16 @@ vector* t(vector* A) {
     return tA;
 }
 
+    /*!
+       \brief Adds two vectors element by element.
+
+       \param A First vector.
+       \param B Second vector.
+
+       \return A pointer to the new vector A + B.
+
+       Stops the program if the dimensions are different.
+     */
 vector* add(vector *A, vector *B) {
     vector* C = create_vector(A->rows, A->cols);
     int k;
@@ -96,6 +173,16 @@ vector* add(vector *A, vector *B) {
     return C;
 }
 
+    /*!
+       \brief Multiplies two vectors element by element.
+
+       \param A First vector.
+       \param B Second vector.
+
+       \return A pointer to the new vector.
+
+       Stops the program if the dimensions are different.
+     */
 vector* dot(vector *A, vector *B) {
     vector* C = create_vector(A->rows, A->cols);
     int k;
@@ -108,6 +195,16 @@ vector* dot(vector *A, vector *B) {
     return C;
 }
 
+    /*!
+       \brief Computes the matrix product of two vectors.
+
+       \param A Left vector.
+       \param B Right vector.
+
+       \return A pointer to the new vector A x B.
+
+       Stops the program if the number of columns of A is different from the number of rows of B.
+     */
 vector* mat_mult(vector *A, vector *B) {
     vector* C;
     int i, j, k, sum;
@@ -128,6 +225,14 @@ vector* mat_mult(vector *A, vector *B) {
     return C;
 }
 
+    /*!
+       \brief Applies a function to every element of a vector.
+
+       \param[in,out] A The vector to modify.
+       \param f The function to apply.
+
+       Modifies the vector in place.
+     */
 void map(vector *A, double (*f)(double)) {
     /* Applique une certaine fonction à tous les éléments d'une matrice.
      Attention ! Modifie en place.*/
@@ -138,6 +243,12 @@ void map(vector *A, double (*f)(double)) {
 }
 
 /* === AFFICHAGE === */
+
+    /*!
+       \brief Displays a vector row by row.
+
+       \param vect The vector to display.
+     */
 void display_vect(vector *vect) {
     int i;
 
@@ -151,6 +262,13 @@ void display_vect(vector *vect) {
     printf("---\n");
 }
 
+    /*!
+       \brief Displays all the values of a vector on one line, between brackets.
+
+       \param vect The vector to display.
+
+       For debugging purposes.
+     */
 void display_raw(vector *vect) {
     int i;
     printf("[");

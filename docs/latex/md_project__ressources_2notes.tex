@@ -1,0 +1,77 @@
+\chapter{Lia}
+\hypertarget{md_project__ressources_2notes}{}\label{md_project__ressources_2notes}\index{Lia@{Lia}}
+\label{md_project__ressources_2notes_autotoc_md17}%
+\Hypertarget{md_project__ressources_2notes_autotoc_md17}%
+ In these notes, I will go over every concepts of the project, raising important hurdles encountered and explaining complex concepts.\hypertarget{md_project__ressources_2notes_autotoc_md18}{}\doxysection{\texorpdfstring{Project details}{Project details}}\label{md_project__ressources_2notes_autotoc_md18}
+This project consists in {\bfseries{building a neural network (NN) in C language}}, testing it, and comparing it to other known NN such as Keras. The motivation behind it is the {\bfseries{understanding of how an NN and everything behind it trully works}}, having already experienced the more practical side with the {\itshape Blue Aria} project. The choice of C as a programming language for the project comes from my desire to experiment on a {\bfseries{lower level}} than with Python, and because I like it.
+
+Every interesting document that I find will be reported in the {\ttfamily bibliography.\+md} file.
+
+\begin{quote}
+Lia stands for ... nothing, it\textquotesingle{}s just how "{}the AI"{} is pronounced in french. \end{quote}
+The overall structure of the project will be based on the \href{https://insert-link-to-valisp-github}{\texttt{ Valisp}} project, conducted during a C class and orchestrated by Olivier Baldellon.\hypertarget{md_project__ressources_2notes_autotoc_md19}{}\doxysection{\texorpdfstring{Chapter 1\+: Basics}{Chapter 1: Basics}}\label{md_project__ressources_2notes_autotoc_md19}
+Neural Networks try to mimic how brains work \+: a more or less complex network of units called {\bfseries{neurons}} process data fed into a first layer of neurons called the {\bfseries{input layer}} and returns and {\bfseries{output}} based on those neurons\textquotesingle{} {\bfseries{settings}}. Most of the times, those networks consist in large (often billions) amount of neurons and tweeking all of their settings by hand is out of the question. That\textquotesingle{}s why we need programming, and that\textquotesingle{}s what we are going to do here.\hypertarget{md_project__ressources_2notes_autotoc_md20}{}\doxysubsection{\texorpdfstring{How a neuron works}{How a neuron works}}\label{md_project__ressources_2notes_autotoc_md20}
+Each neuron, regardless of its position in the network, have this structure\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{graph\ LR}
+\DoxyCodeLine{A([input\ 1])\ -\/-\/>|weight\ 1|\ D((node))}
+\DoxyCodeLine{B([input\ 2])\ -\/-\/>|weight\ 2|\ D}
+\DoxyCodeLine{C([...])\ -\/-\/>|...|\ D}
+\DoxyCodeLine{D\ -\/-\/>\ E([output])}
+
+\end{DoxyCode}
+ \begin{quote}
+Basic structure of a neuron. Each node receive one or several input data, adjusted with a weight. \end{quote}
+The output of a neuron is given by the following formula\+: \$output = \textbackslash{}sum\+\_\+\{k=i\}\texorpdfstring{$^\wedge$}{\string^}n \textbackslash{}left( i\+\_\+k \textbackslash{}times w\+\_\+k \textbackslash{}right)\$
+
+With n the number of inputs the node is receiving.
+
+However, this formula is only true for the neurons on the input layer. For any other neuron of the network, something called {\bfseries{bias}} is added to the final output. The correct formula for every neuron except those of the input layer is therefore the following\+: \$output = \textbackslash{}sum\+\_\+\{k=i\}\texorpdfstring{$^\wedge$}{\string^}n \textbackslash{}left( i\+\_\+k \textbackslash{}times w\+\_\+k \textbackslash{}right) + b\$
+
+Then, each output is passed to the next neuron and so on, until the output layer is reached.\hypertarget{md_project__ressources_2notes_autotoc_md21}{}\doxysubsection{\texorpdfstring{Variables representation}{Variables representation}}\label{md_project__ressources_2notes_autotoc_md21}
+As a large amount of variables will be present in our network, we need to find a way to store and handle all of them. For this matter, the mathematical tool which will be used are {\bfseries{vectors}}.
+
+In fact, we can notice that the sum in each formulas described before actually is the same as the dot multiplication between two n-\/dimension vectors. We can then create a pattern that links every layers\+: \$\textbackslash{}left\mbox{[} current\textbackslash{} nodes \textbackslash{}right\mbox{]} \textbackslash{}times \textbackslash{}left\mbox{[} weights \textbackslash{}right\mbox{]} = next\textbackslash{} node\$
+
+The two vectors being represented by \$1 \textbackslash{}times n\$ matrix. Thus, each node of a certain layer is connected to all the nodes of the previous layer by weights. Then, we can obtain the number of weights connecting two layers by multiplying the number ofneurons of each layer \+: an {\itshape i} neurons layer is connected to a {\itshape j} neurons layer by {\itshape ij} weights.
+
+When every neuron has its value, the output layer is able to provide a prediction. This prdiction is then compared to the labeled data to obtain a {\bfseries{cost}}. This cost will allow us to verify if the model is accurate or not. The lower the cost, the better the model is. Thanks to this data, we can then update the weights and biases of our model, in order to improve it. For that purpose, the {\bfseries{gradient of the cost}} will be calculated after each prediction from the model.\hypertarget{md_project__ressources_2notes_autotoc_md22}{}\doxysubsection{\texorpdfstring{Calculation}{Calculation}}\label{md_project__ressources_2notes_autotoc_md22}
+\begin{quote}
+{\bfseries{Notation \+:}} layers will be labeled by their index in the network, the input layer being the 0th layer. The number of nodes of a layer will be represented as \$n\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left(l\textbackslash{}right))\$. \end{quote}
+To calculate every value in an {\itshape l} layer, we can use matrix multiplication \+: layer {\itshape l-\/1} values will be stored in an \$n\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left(l-\/1\textbackslash{}right)) \textbackslash{}times 1\$ matrix and weights are stored in an \$n\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left(l\textbackslash{}right)) \textbackslash{}times n\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left(l-\/1\textbackslash{}right))\$ matrix. Multiplying those two matrix will result in an \$n\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left(l\textbackslash{}right)) \textbackslash{}times 1\$ matrix, which then can be used for the next layer (but not before going into the {\bfseries{activation function}}, see the next section).
+
+The bias matrix for the \+\_\+l\+\_\+th layer will be of the same dimension as the layer values matrix.
+
+To sum it up, to get the values for the nodes in the next layer, we need to matrix multiply the weight matrix by the node values from the previous layer, and then add the bias values to the result.\hypertarget{md_project__ressources_2notes_autotoc_md23}{}\doxysubsection{\texorpdfstring{Activation Functions}{Activation Functions}}\label{md_project__ressources_2notes_autotoc_md23}
+Activation functions must respct two atributes \+:
+\begin{DoxyItemize}
+\item They must be nonlinear
+\item Their range must predetermined (usually between 0 and 1)
+\end{DoxyItemize}
+
+After we get values from the matrix multiplication, we must fed our results in the function, and the resulting matrix will be our final product. A usual activation function is the {\itshape sigmoid} function, we will use this one here too.\hypertarget{md_project__ressources_2notes_autotoc_md24}{}\doxysubsection{\texorpdfstring{Input and Output Data}{Input and Output Data}}\label{md_project__ressources_2notes_autotoc_md24}
+The input data is called {\bfseries{X}} and consists in a matrix which dimensions are \$n \textbackslash{}times m\$, with \$m\$ being the number of {\bfseries{samples}} and \$n\$ the number of {\bfseries{features}}, or parameters to feed the input layer.
+
+The labelled output data is called {\bfseries{y}} and, the same way, consists in a matrix of dimensions \$n \textbackslash{}times m\$ (with \$n\$ being the number of output nodes this time).
+
+The output of our model is called {\bfseries{ŷ}} ("{}y hat"{}).\hypertarget{md_project__ressources_2notes_autotoc_md25}{}\doxysubsection{\texorpdfstring{Final Maths}{Final Maths}}\label{md_project__ressources_2notes_autotoc_md25}
+Using everything we went through before, we can write maths that sum the process. ~\newline
+\$Z\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}l\textbackslash{}right\mbox{]}) = W\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}l\textbackslash{}right\mbox{]}) A\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}l-\/1\textbackslash{}right\mbox{]}) + B\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}l\textbackslash{}right\mbox{]})\$ ~\newline
+\$A\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}l\textbackslash{}right\mbox{]}) = g(Z\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}1\textbackslash{}right\mbox{]}))\$
+
+{\bfseries{Dimensions \+:}} \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \$Z\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}l\textbackslash{}right\mbox{]})\$ \texorpdfstring{$\vert$}{|} \$n\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}l\textbackslash{}right\mbox{]}) \textbackslash{}times m\$ \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \$W\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}l\textbackslash{}right\mbox{]})\$ \texorpdfstring{$\vert$}{|} \$n\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}l\textbackslash{}right\mbox{]}) \textbackslash{}times n\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}l-\/1\textbackslash{}right\mbox{]})\$ \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \$A\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}l-\/1\textbackslash{}right\mbox{]})\$ \texorpdfstring{$\vert$}{|} \$n\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}l-\/1\textbackslash{}right\mbox{]}) \textbackslash{}times m\$ \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \$B\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}l\textbackslash{}right\mbox{]})\$ \texorpdfstring{$\vert$}{|} \$n\texorpdfstring{$^\wedge$}{\string^}(\textbackslash{}left\mbox{[}l\textbackslash{}right\mbox{]}) \textbackslash{}times 1\$ \texorpdfstring{$\vert$}{|}
+
+We can notice that we cannot add the matrix multiplication result to the bias matrix, due to conflicting dimensions. To prevent that, we stretch the bias matrix by copying it m times. This process is called {\bfseries{broadcasting}}.\hypertarget{md_project__ressources_2notes_autotoc_md26}{}\doxysection{\texorpdfstring{Chapter 2\+: Coding}{Chapter 2: Coding}}\label{md_project__ressources_2notes_autotoc_md26}
+\hypertarget{md_project__ressources_2notes_autotoc_md27}{}\doxysubsection{\texorpdfstring{Environnement}{Environnement}}\label{md_project__ressources_2notes_autotoc_md27}
+First things first, the C environnement the project will be developped in needs to be properly setup. Any code will be written on Emacs.\hypertarget{md_project__ressources_2notes_autotoc_md28}{}\doxysubsubsection{\texorpdfstring{Makefile}{Makefile}}\label{md_project__ressources_2notes_autotoc_md28}
+The makefile contains 3 targets \+: a {\bfseries{default}} target, a {\bfseries{debug}} target and a {\bfseries{clean}} target. It structure is mainly the same as the one from {\itshape Valisp}, with some adjustments regarding dependencies and targets.\hypertarget{md_project__ressources_2notes_autotoc_md29}{}\doxysubsubsection{\texorpdfstring{Framework}{Framework}}\label{md_project__ressources_2notes_autotoc_md29}
+\hypertarget{md_project__ressources_2notes_autotoc_md30}{}\doxysubsection{\texorpdfstring{Tools}{Tools}}\label{md_project__ressources_2notes_autotoc_md30}
+Before building any part of the network, we need to define the tools that the maths and the logic require, especially vectors.\hypertarget{md_project__ressources_2notes_autotoc_md31}{}\doxysubsubsection{\texorpdfstring{1. Vectors}{1. Vectors}}\label{md_project__ressources_2notes_autotoc_md31}
+One of the key elements of all the maths we defined in previous parts is matrices, some kind of vectors. There\textquotesingle{}s no matrix, array or vector type in C, so we need to create one. The solution I setled upon for this project to represent a vector from \$\textbackslash{}mathcal\{m \textbackslash{}times n\}\$ is a struct containing 3 fields \+:
+\begin{DoxyItemize}
+\item {\ttfamily rows} \+: an integer indicating the number of rows (\$m\$)
+\item {\ttfamily cols} \+: an integer indicating the number of columns (\$n\$)
+\item {\ttfamily data} \+: a unidimensionnal list of doubles With this, we can represent any matrix we like, and access its elements with a little index trick.
+\end{DoxyItemize}
+
+Several methods are defined to manipulate those vectors. Most of them cover the basics (create, read, update and delete) and some others allow us to compare and do operations between them. Those operations are the one needed for our maths. It\textquotesingle{}s worth noting that a {\bfseries{second constructor}} was implemented, specialy to create random matrices, restraining random values between 0 and {\ttfamily range}. It will be used for weights and bias matrices. 

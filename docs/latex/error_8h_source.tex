@@ -1,0 +1,25 @@
+\doxysection{error.\+h}
+\hypertarget{error_8h_source}{}\label{error_8h_source}\index{include/error.h@{include/error.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ERROR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ERROR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ FATAL\_ERROR(CAUSE)\ fatal\_error(\_\_FILE\_\_,\ \_\_LINE\_\_,\ \#CAUSE)}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keywordtype}{void}\ fatal\_error(\textcolor{keywordtype}{char}*\ file,\ \textcolor{keywordtype}{int}\ line,\ \textcolor{keywordtype}{char}*\ causes);}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{enum}\ errors\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ TYPE,}
+\DoxyCodeLine{00010\ \ \ \ \ ARITY,}
+\DoxyCodeLine{00011\ \ \ \ \ NAME,}
+\DoxyCodeLine{00012\ \ \ \ \ DIVISION\_BY\_ZERO,}
+\DoxyCodeLine{00013\ \ \ \ \ SYNTAXE,}
+\DoxyCodeLine{00014\ \ \ \ \ RUNTIME}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{void}\ error(\textcolor{keyword}{enum}\ errors\ type,\ \textcolor{keywordtype}{char}*\ function,\ \textcolor{keywordtype}{char}*\ explanation);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

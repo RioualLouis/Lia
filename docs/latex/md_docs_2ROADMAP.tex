@@ -1,0 +1,236 @@
+\chapter{Roadmap \+: dates et dépendances}
+\hypertarget{md_docs_2ROADMAP}{}\label{md_docs_2ROADMAP}\index{Roadmap : dates et dépendances@{Roadmap : dates et dépendances}}
+\label{md_docs_2ROADMAP_autotoc_md0}%
+\Hypertarget{md_docs_2ROADMAP_autotoc_md0}%
+ \begin{quote}
+Généré par {\ttfamily kickoff.\+py}. Complète \`{}\+PLANNING.md\`{}. \end{quote}
+\hypertarget{md_docs_2ROADMAP_autotoc_md1}{}\doxysection{\texorpdfstring{Lecture}{Lecture}}\label{md_docs_2ROADMAP_autotoc_md1}
+
+\begin{DoxyItemize}
+\item {\itshape Début} et {\itshape Fin} alimentent la vue Roadmap du Project Git\+Hub. {\itshape j-\/p} \+: charge en jours-\/personnes.
+\item Les dépendances sont de type fin-\/début \+: une issue ne démarre qu\textquotesingle{}après la fin de ses bloquantes.
+\item Les identifiants sont des repères de ce document. Une bloquante {\ttfamily ext\+:} est externe au plan.
+\end{DoxyItemize}\hypertarget{md_docs_2ROADMAP_autotoc_md2}{}\doxysection{\texorpdfstring{Mise en place dans le Project Git\+Hub}{Mise en place dans le Project GitHub}}\label{md_docs_2ROADMAP_autotoc_md2}
+
+\begin{DoxyEnumerate}
+\item Champs {\ttfamily Début} et {\ttfamily Fin} (Date), {\ttfamily Catégorie} et {\ttfamily Difficulté} (sélection unique) \+: créés par {\ttfamily kickoff.\+py github}.
+\item Ajoutez une vue de type {\bfseries{Roadmap}}. Dans {\itshape Date fields}, choisissez {\ttfamily Début} et {\ttfamily Fin}.
+\item Dans {\itshape View}, {\itshape Group by}, choisissez {\ttfamily Catégorie}. Le regroupement par labels n\textquotesingle{}existe pas.
+\item Dans {\itshape Markers}, activez les milestones \+: ils représentent les livraisons.
+\item Les itérations (sprints) se créent dans l\textquotesingle{}interface du Project.
+\end{DoxyEnumerate}\hypertarget{md_docs_2ROADMAP_autotoc_md3}{}\doxysection{\texorpdfstring{Issues par période}{Issues par période}}\label{md_docs_2ROADMAP_autotoc_md3}
+\hypertarget{md_docs_2ROADMAP_autotoc_md4}{}\doxysubsection{\texorpdfstring{S1, Fondations \+: outils et bibliothèque matricielle (mar 13/10 au lun 30/11)}{S1, Fondations : outils et bibliothèque matricielle (mar 13/10 au lun 30/11)}}\label{md_docs_2ROADMAP_autotoc_md4}
+Capacité \+: 28 j-\/p. Charge \+: 20 j-\/p. Livraison \+: Outils en place, bibliothèque matricielle testée.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{8}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endhead
+1.\+1   &Passer la compilation en C17   &Outils   &mar 13/10   &mer 14/10   &1   &2   &aucune    \\\cline{1-8}
+1.\+2   &Étudier les tests unitaires en C   &Étude   &sam 17/10   &lun 19/10   &1   &2   &aucune    \\\cline{1-8}
+1.\+3   &Mettre en place le framework de tests   &Outils   &mar 20/10   &mer 21/10   &1   &2   &1.\+1, 1.\+2    \\\cline{1-8}
+1.\+4   &Configurer clang-\/format et l\textquotesingle{}analyse statique   &Outils   &sam 24/10   &lun 26/10   &1   &2   &aucune    \\\cline{1-8}
+1.\+5   &Configurer Doxygen   &Documentation   &mar 27/10   &mar 27/10   &1   &1   &aucune    \\\cline{1-8}
+1.\+6   &Réorganiser le dépôt   &Outils   &mer 28/10   &mer 28/10   &1   &1   &1.\+3    \\\cline{1-8}
+1.\+7   &Tester les opérations matricielles existantes   &Tests   &sam 31/10   &mar 03/11   &1   &3   &1.\+3, 1.\+6    \\\cline{1-8}
+1.\+8   &Compléter la bibliothèque matricielle   &Code   &mer 04/11   &lun 09/11   &1   &3   &1.\+7    \\\cline{1-8}
+1.\+9   &Initialiser les poids   &Code   &mar 10/11   &mer 11/11   &1   &2   &1.\+8    \\\cline{1-8}
+1.\+10   &Publier v0.\+1   &Livraison   &sam 28/11   &lun 30/11   &1   &2   &1.\+4, 1.\+5, 1.\+9   \\\cline{1-8}
+\end{longtabu}
+\hypertarget{md_docs_2ROADMAP_autotoc_md5}{}\doxysubsection{\texorpdfstring{S2, Propagation avant sur MNIST (mar 01/12 au mer 30/12)}{S2, Propagation avant sur MNIST (mar 01/12 au mer 30/12)}}\label{md_docs_2ROADMAP_autotoc_md5}
+Capacité \+: 18 j-\/p. Charge \+: 14 j-\/p. Livraison \+: Chargement de MNIST et propagation avant complète.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{8}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endhead
+2.\+1   &Étudier le format des fichiers MNIST   &Étude   &mar 01/12   &mar 01/12   &1   &1   &aucune    \\\cline{1-8}
+2.\+2   &Charger MNIST   &Code   &mer 02/12   &lun 07/12   &1   &3   &2.\+1, 1.\+8    \\\cline{1-8}
+2.\+3   &Diagramme UML des structures de données   &UML   &mar 08/12   &mar 08/12   &1   &1   &1.\+8    \\\cline{1-8}
+2.\+4   &Implémenter la couche dense   &Code   &mer 09/12   &lun 14/12   &1   &3   &1.\+8, 1.\+9, 2.\+3    \\\cline{1-8}
+2.\+5   &Ajouter Re\+LU et softmax   &Code   &mar 15/12   &mer 16/12   &1   &2   &1.\+3    \\\cline{1-8}
+2.\+6   &Construire le réseau   &Code   &sam 19/12   &lun 21/12   &1   &2   &2.\+4, 2.\+5    \\\cline{1-8}
+2.\+7   &Implémenter les fonctions de perte   &Code   &mar 22/12   &mar 22/12   &1   &1   &2.\+5    \\\cline{1-8}
+2.\+8   &Publier v0.\+2   &Livraison   &mer 30/12   &mer 30/12   &1   &1   &2.\+2, 2.\+6, 2.\+7   \\\cline{1-8}
+\end{longtabu}
+\hypertarget{md_docs_2ROADMAP_autotoc_md6}{}\doxysubsection{\texorpdfstring{S3, Le réseau apprend (sam 02/01 au sam 30/01)}{S3, Le réseau apprend (sam 02/01 au sam 30/01)}}\label{md_docs_2ROADMAP_autotoc_md6}
+Capacité \+: 17 j-\/p. Charge \+: 13 j-\/p. Livraison \+: Rétropropagation vérifiée et premier entraînement sur MNIST.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{8}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endhead
+3.\+1   &Étudier la rétropropagation   &Étude   &sam 02/01   &lun 04/01   &1   &2   &aucune    \\\cline{1-8}
+3.\+2   &Diagramme UML de la boucle d\textquotesingle{}entraînement   &UML   &mar 05/01   &mar 05/01   &1   &1   &3.\+1, 2.\+6    \\\cline{1-8}
+3.\+3   &Implémenter la propagation arrière   &Code   &mer 06/01   &lun 11/01   &1   &3   &2.\+6, 2.\+7, 3.\+1, 3.\+2    \\\cline{1-8}
+3.\+4   &Vérifier les gradients numériquement   &Tests   &mar 12/01   &mer 13/01   &1   &2   &3.\+3    \\\cline{1-8}
+3.\+5   &Écrire la boucle d\textquotesingle{}entraînement   &Code   &sam 16/01   &lun 18/01   &1   &2   &3.\+3    \\\cline{1-8}
+3.\+6   &Entraîner sur MNIST pour la première fois   &Code   &mar 19/01   &mer 20/01   &1   &2   &3.\+4, 3.\+5, 2.\+2    \\\cline{1-8}
+3.\+7   &Publier v0.\+3   &Livraison   &sam 30/01   &sam 30/01   &1   &1   &3.\+6   \\\cline{1-8}
+\end{longtabu}
+\hypertarget{md_docs_2ROADMAP_autotoc_md7}{}\doxysubsection{\texorpdfstring{S4, Objectif de base atteint (lun 01/02 au sam 27/02)}{S4, Objectif de base atteint (lun 01/02 au sam 27/02)}}\label{md_docs_2ROADMAP_autotoc_md7}
+Capacité \+: 16 j-\/p. Charge \+: 12 j-\/p. Livraison \+: Évaluation, courbes, CI et documentation \+: objectif de base atteint.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{8}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endhead
+4.\+1   &Évaluer sur le jeu de test   &Code   &lun 01/02   &mar 02/02   &1   &2   &3.\+6    \\\cline{1-8}
+4.\+2   &Tracer les courbes d\textquotesingle{}entraînement   &Outils   &mer 03/02   &sam 06/02   &1   &2   &3.\+6    \\\cline{1-8}
+4.\+3   &Étudier l\textquotesingle{}intégration continue   &Étude   &lun 08/02   &lun 08/02   &1   &1   &aucune    \\\cline{1-8}
+4.\+4   &Mettre en place la CI   &Outils   &mar 09/02   &mer 10/02   &1   &2   &4.\+3, 1.\+3    \\\cline{1-8}
+4.\+5   &Ajouter les options de ligne de commande   &Code   &sam 13/02   &lun 15/02   &1   &2   &3.\+6    \\\cline{1-8}
+4.\+6   &Mettre la documentation à jour   &Documentation   &mar 16/02   &mer 17/02   &1   &2   &1.\+5    \\\cline{1-8}
+4.\+7   &Publier v1.\+0   &Livraison   &sam 27/02   &sam 27/02   &1   &1   &4.\+1, 4.\+2, 4.\+4, 4.\+5, 4.\+6   \\\cline{1-8}
+\end{longtabu}
+\hypertarget{md_docs_2ROADMAP_autotoc_md8}{}\doxysubsection{\texorpdfstring{S5, Extension 3 \+: outils d\textquotesingle{}entraînement (1/2) (lun 01/03 au mer 31/03)}{S5, Extension 3 : outils d'entraînement (1/2) (lun 01/03 au mer 31/03)}}\label{md_docs_2ROADMAP_autotoc_md8}
+Capacité \+: 19 j-\/p. Charge \+: 14 j-\/p. Livraison \+: Mini-\/lots, optimiseurs, sauvegarde du modèle, fichier de configuration.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{8}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endhead
+5.\+1   &Étudier les optimiseurs   &Étude   &lun 01/03   &mar 02/03   &1   &2   &aucune    \\\cline{1-8}
+5.\+2   &Entraîner par mini-\/lots   &Code   &mer 03/03   &lun 08/03   &1   &3   &3.\+5    \\\cline{1-8}
+5.\+3   &Implémenter momentum et Adam   &Code   &mar 09/03   &sam 13/03   &1   &3   &5.\+1, 5.\+2    \\\cline{1-8}
+5.\+4   &Sauvegarder et charger un modèle   &Code   &lun 15/03   &mer 17/03   &1   &3   &2.\+6    \\\cline{1-8}
+5.\+5   &Lire un fichier de configuration   &Code   &sam 20/03   &lun 22/03   &1   &2   &4.\+5    \\\cline{1-8}
+5.\+6   &Publier v1.\+1-\/beta   &Livraison   &mer 31/03   &mer 31/03   &1   &1   &5.\+3, 5.\+4, 5.\+5   \\\cline{1-8}
+\end{longtabu}
+\hypertarget{md_docs_2ROADMAP_autotoc_md9}{}\doxysubsection{\texorpdfstring{S6, Extension 3 \+: outils d\textquotesingle{}entraînement (2/2) (sam 03/04 au mer 28/04)}{S6, Extension 3 : outils d'entraînement (2/2) (sam 03/04 au mer 28/04)}}\label{md_docs_2ROADMAP_autotoc_md9}
+Capacité \+: 16 j-\/p. Charge \+: 12 j-\/p. Livraison \+: Régularisation, normalisation par lots, Fashion-\/\+MNIST.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{8}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endhead
+6.\+1   &Étudier la régularisation   &Étude   &sam 03/04   &lun 05/04   &1   &2   &aucune    \\\cline{1-8}
+6.\+2   &Ajouter L2 et dropout   &Code   &mar 06/04   &sam 10/04   &1   &3   &6.\+1, 5.\+2    \\\cline{1-8}
+6.\+3   &Implémenter la normalisation par lots   &Code   &lun 12/04   &mer 14/04   &1   &3   &6.\+1, 5.\+2    \\\cline{1-8}
+6.\+4   &Prendre en charge Fashion-\/\+MNIST   &Code   &sam 17/04   &lun 19/04   &1   &2   &2.\+2    \\\cline{1-8}
+6.\+5   &Publier v1.\+1   &Livraison   &mar 27/04   &mer 28/04   &1   &2   &6.\+2, 6.\+3, 6.\+4   \\\cline{1-8}
+\end{longtabu}
+\hypertarget{md_docs_2ROADMAP_autotoc_md10}{}\doxysubsection{\texorpdfstring{S7, Extension 2 \+: performance (sam 01/05 au lun 31/05)}{S7, Extension 2 : performance (sam 01/05 au lun 31/05)}}\label{md_docs_2ROADMAP_autotoc_md10}
+Capacité \+: 18 j-\/p. Charge \+: 14 j-\/p. Livraison \+: Profilage, optimisation du produit matriciel, Open\+MP, rapport de mesures.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{8}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endhead
+7.\+1   &Étudier la hiérarchie mémoire et le profilage   &Étude   &sam 01/05   &lun 03/05   &1   &2   &aucune    \\\cline{1-8}
+7.\+2   &Écrire un banc de mesure   &Outils   &mar 04/05   &mer 05/05   &1   &2   &3.\+6    \\\cline{1-8}
+7.\+3   &Profiler l\textquotesingle{}entraînement   &Outils   &sam 08/05   &sam 08/05   &1   &1   &7.\+1, 7.\+2    \\\cline{1-8}
+7.\+4   &Optimiser le produit matriciel   &Code   &lun 10/05   &mer 12/05   &1   &3   &7.\+3    \\\cline{1-8}
+7.\+5   &Vectoriser avec SIMD   &Code   &sam 15/05   &lun 17/05   &1   &2   &7.\+4    \\\cline{1-8}
+7.\+6   &Paralléliser avec Open\+MP   &Code   &mar 18/05   &mer 19/05   &1   &2   &7.\+4    \\\cline{1-8}
+7.\+7   &Publier v1.\+2   &Livraison   &sam 29/05   &lun 31/05   &1   &2   &7.\+4, 7.\+6   \\\cline{1-8}
+\end{longtabu}
+\hypertarget{md_docs_2ROADMAP_autotoc_md11}{}\doxysubsection{\texorpdfstring{S8, Extension 1 \+: CNN (1/2) (mar 01/06 au mer 30/06)}{S8, Extension 1 : CNN (1/2) (mar 01/06 au mer 30/06)}}\label{md_docs_2ROADMAP_autotoc_md11}
+Capacité \+: 18 j-\/p. Charge \+: 13 j-\/p. Livraison \+: Interface de couche générique et propagation avant de la convolution.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{8}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endhead
+8.\+1   &Étudier les convolutions   &Étude   &mar 01/06   &sam 05/06   &1   &3   &aucune    \\\cline{1-8}
+8.\+2   &Diagramme UML de l\textquotesingle{}interface de couche   &UML   &lun 07/06   &lun 07/06   &1   &1   &2.\+3, 8.\+1    \\\cline{1-8}
+8.\+3   &Rendre l\textquotesingle{}interface de couche générique   &Code   &mar 08/06   &sam 12/06   &1   &3   &8.\+2    \\\cline{1-8}
+8.\+4   &Gérer les tenseurs   &Code   &lun 14/06   &mar 15/06   &1   &2   &8.\+1    \\\cline{1-8}
+8.\+5   &Implémenter la propagation avant de la convolution   &Code   &mer 16/06   &lun 21/06   &1   &3   &8.\+3, 8.\+4    \\\cline{1-8}
+8.\+6   &Publier v2.\+0-\/beta   &Livraison   &mer 30/06   &mer 30/06   &1   &1   &8.\+5   \\\cline{1-8}
+\end{longtabu}
+\hypertarget{md_docs_2ROADMAP_autotoc_md12}{}\doxysubsection{\texorpdfstring{S9, Extension 1 \+: CNN (2/2) (sam 03/07 au sam 31/07)}{S9, Extension 1 : CNN (2/2) (sam 03/07 au sam 31/07)}}\label{md_docs_2ROADMAP_autotoc_md12}
+Capacité \+: 17 j-\/p. Charge \+: 12 j-\/p. Livraison \+: CNN complet entraîné sur MNIST et Fashion-\/\+MNIST.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{8}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endhead
+9.\+1   &Étudier la rétropropagation des convolutions   &Étude   &sam 03/07   &lun 05/07   &1   &2   &aucune    \\\cline{1-8}
+9.\+2   &Implémenter la propagation arrière de la convolution   &Code   &mar 06/07   &sam 10/07   &1   &3   &9.\+1, 8.\+5    \\\cline{1-8}
+9.\+3   &Ajouter le max pooling   &Code   &lun 12/07   &mar 13/07   &1   &2   &8.\+3    \\\cline{1-8}
+9.\+4   &Optimiser la convolution par im2col   &Code   &mer 14/07   &sam 17/07   &1   &2   &8.\+5    \\\cline{1-8}
+9.\+5   &Entraîner un CNN   &Code   &lun 19/07   &mar 20/07   &1   &2   &9.\+2, 9.\+3    \\\cline{1-8}
+9.\+6   &Publier v2.\+0   &Livraison   &sam 31/07   &sam 31/07   &1   &1   &9.\+5   \\\cline{1-8}
+\end{longtabu}
+\hypertarget{md_docs_2ROADMAP_autotoc_md13}{}\doxysubsection{\texorpdfstring{S10, Comparaison finale (lun 02/08 au sam 21/08)}{S10, Comparaison finale (lun 02/08 au sam 21/08)}}\label{md_docs_2ROADMAP_autotoc_md13}
+Capacité \+: 12 j-\/p. Charge \+: 9 j-\/p. Livraison \+: Comparaison avec Py\+Torch, rapport final, version finale.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{8}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ ID   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Issue   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Catégorie   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Début   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ j-\/p   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bloquée par    }\\\cline{1-8}
+\endhead
+10.\+1   &Écrire les modèles de référence en Py\+Torch   &Comparaison   &lun 02/08   &mar 03/08   &1   &2   &aucune    \\\cline{1-8}
+10.\+2   &Comparer Lia et Py\+Torch   &Comparaison   &mer 04/08   &sam 07/08   &1   &2   &10.\+1, 9.\+5    \\\cline{1-8}
+10.\+3   &Tester un CNN sur CIFAR-\/10   &Code   &lun 09/08   &mar 10/08   &1   &2   &9.\+5    \\\cline{1-8}
+10.\+4   &Rédiger le rapport final   &Documentation   &mer 11/08   &sam 14/08   &1   &2   &10.\+2    \\\cline{1-8}
+10.\+5   &Publier v2.\+1   &Livraison   &sam 21/08   &sam 21/08   &1   &1   &10.\+4   \\\cline{1-8}
+\end{longtabu}
+\hypertarget{md_docs_2ROADMAP_autotoc_md14}{}\doxysection{\texorpdfstring{Plus longue chaîne de dépendances}{Plus longue chaîne de dépendances}}\label{md_docs_2ROADMAP_autotoc_md14}
+{\ttfamily 1.\+1} puis {\ttfamily 1.\+3} puis {\ttfamily 1.\+6} puis {\ttfamily 1.\+7} puis {\ttfamily 1.\+8} puis {\ttfamily 1.\+9} puis {\ttfamily 2.\+4} puis {\ttfamily 2.\+6} puis {\ttfamily 3.\+2} puis {\ttfamily 3.\+3} puis {\ttfamily 3.\+4} puis {\ttfamily 3.\+6} puis {\ttfamily 7.\+2} puis {\ttfamily 7.\+3} puis {\ttfamily 7.\+4} puis {\ttfamily 7.\+6} puis {\ttfamily 7.\+7}
+
+Un retard sur l\textquotesingle{}un de ces maillons décale tout ce qui suit.\hypertarget{md_docs_2ROADMAP_autotoc_md15}{}\doxysection{\texorpdfstring{Points de vigilance}{Points de vigilance}}\label{md_docs_2ROADMAP_autotoc_md15}
+
+\begin{DoxyItemize}
+\item Tâches optionnelles (6 j-\/p), à sacrifier en premier \+: {\ttfamily 7.\+5}, {\ttfamily 9.\+4}, {\ttfamily 10.\+3}. 
+\end{DoxyItemize}

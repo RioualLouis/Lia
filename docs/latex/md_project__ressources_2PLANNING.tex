@@ -1,0 +1,387 @@
+\chapter{Plan de projet Lia}
+\hypertarget{md_project__ressources_2PLANNING}{}\label{md_project__ressources_2PLANNING}\index{Plan de projet Lia@{Plan de projet Lia}}
+\label{md_project__ressources_2PLANNING_autotoc_md32}%
+\Hypertarget{md_project__ressources_2PLANNING_autotoc_md32}%
+ \begin{quote}
+Généré par {\ttfamily kickoff.\+py} à partir de {\ttfamily plan.\+json}. Pour modifier le plan, éditez {\ttfamily plan.\+json} puis relancez la génération. Dates et dépendances issue par issue \+: \doxysectlink{md_docs_2ROADMAP}{\`{}docs/\+ROADMAP.md\`{}}{0}. \end{quote}
+\hypertarget{md_project__ressources_2PLANNING_autotoc_md33}{}\doxysection{\texorpdfstring{Hypothèses}{Hypothèses}}\label{md_project__ressources_2PLANNING_autotoc_md33}
+
+\begin{DoxyItemize}
+\item Projet personnel, une personne de niveau intermédiaire.
+\item Une séance d\textquotesingle{}environ 1 heure compte pour 1 jour-\/personne (j-\/p), les lundis, mardis, mercredis et samedis.
+\item Sprints alignés sur les mois civils ; octobre 2026 est fusionné avec novembre, août 2027 s\textquotesingle{}arrête le samedi 21.
+\item La capacité affichée est le nombre de séances disponibles ; la charge planifiée reste sous 80 pour cent, soit au moins 20 pour cent de marge par sprint.
+\item Les tâches s\textquotesingle{}enchaînent dans l\textquotesingle{}ordre ; la publication de chaque version est placée en fin de sprint et les séances supplémentaires s\textquotesingle{}ajoutent à la marge.
+\item Code en anglais, commentaires en français, compilation en C17 avec gcc.
+\item Versions \+: v1.\+0 objectif de base (MLP sur MNIST), v1.\+1 outils d\textquotesingle{}entraînement, v1.\+2 performance, v2.\+0 CNN, v2.\+1 comparaison finale.
+\item Les corrections issues de la relecture du code existant sont traitées hors plan, dans la marge du S1.
+\end{DoxyItemize}
+
+{\bfseries{Lecture des tableaux}} \+: {\itshape Pers.} est la taille du groupe sur la tâche. {\itshape Diff.} \+: F (facile), M (moyen), D (difficile).\hypertarget{md_project__ressources_2PLANNING_autotoc_md34}{}\doxysection{\texorpdfstring{Calendrier et capacité}{Calendrier et capacité}}\label{md_project__ressources_2PLANNING_autotoc_md34}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Période   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Dates   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Capacité (j-\/p)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Charge (j-\/p)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Livraison    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Période   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Dates   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Capacité (j-\/p)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Charge (j-\/p)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Livraison    }\\\cline{1-6}
+\endhead
+S1   &mar 13/10 au lun 30/11   &sprint   &28   &20   &Outils en place, bibliothèque matricielle testée    \\\cline{1-6}
+S2   &mar 01/12 au mer 30/12   &sprint   &18   &14   &Chargement de MNIST et propagation avant complète    \\\cline{1-6}
+S3   &sam 02/01 au sam 30/01   &sprint   &17   &13   &Rétropropagation vérifiée et premier entraînement sur MNIST    \\\cline{1-6}
+S4   &lun 01/02 au sam 27/02   &sprint   &16   &12   &Évaluation, courbes, CI et documentation \+: objectif de base atteint    \\\cline{1-6}
+S5   &lun 01/03 au mer 31/03   &sprint   &19   &14   &Mini-\/lots, optimiseurs, sauvegarde du modèle, fichier de configuration    \\\cline{1-6}
+S6   &sam 03/04 au mer 28/04   &sprint   &16   &12   &Régularisation, normalisation par lots, Fashion-\/\+MNIST    \\\cline{1-6}
+S7   &sam 01/05 au lun 31/05   &sprint   &18   &14   &Profilage, optimisation du produit matriciel, Open\+MP, rapport de mesures    \\\cline{1-6}
+S8   &mar 01/06 au mer 30/06   &sprint   &18   &13   &Interface de couche générique et propagation avant de la convolution    \\\cline{1-6}
+S9   &sam 03/07 au sam 31/07   &sprint   &17   &12   &CNN complet entraîné sur MNIST et Fashion-\/\+MNIST    \\\cline{1-6}
+S10   &lun 02/08 au sam 21/08   &sprint   &12   &9   &Comparaison avec Py\+Torch, rapport final, version finale   \\\cline{1-6}
+\end{longtabu}
+
+
+{\bfseries{Bilan}} \+: 179 j-\/p de capacité, 133 j-\/p planifiés, marge de 46 j-\/p.\hypertarget{md_project__ressources_2PLANNING_autotoc_md35}{}\doxysection{\texorpdfstring{Sprints}{Sprints}}\label{md_project__ressources_2PLANNING_autotoc_md35}
+\hypertarget{md_project__ressources_2PLANNING_autotoc_md36}{}\doxysubsection{\texorpdfstring{S1, Fondations \+: outils et bibliothèque matricielle (mar 13/10 au lun 30/11)}{S1, Fondations : outils et bibliothèque matricielle (mar 13/10 au lun 30/11)}}\label{md_project__ressources_2PLANNING_autotoc_md36}
+Livraison \+: Outils en place, bibliothèque matricielle testée.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endhead
+Passer la compilation en C17   &Remplacer le standard C89 par C17 dans le Makefile et régler l\textquotesingle{}accès à M\+\_\+\+PI. Ajouter une cible debug avec sanitizers et une cible clean.   &1   &F   &Make, gcc, sanitizers    \\\cline{1-5}
+Étudier les tests unitaires en C   &Comprendre le rôle d\textquotesingle{}un test unitaire et comparer quelques frameworks C. Choisir un framework et noter les raisons du choix.   &1   &F   &Tests unitaires    \\\cline{1-5}
+Mettre en place le framework de tests   &Intégrer le framework choisi et une cible make test. Un premier test (sigmoid) doit passer.   &1   &M   &Make, tests unitaires    \\\cline{1-5}
+Configurer clang-\/format et l\textquotesingle{}analyse statique   &Écrire la configuration de style et l\textquotesingle{}appliquer au code existant. Lancer un analyseur statique et traiter ses remarques.   &1   &F   &clang-\/format, cppcheck ou clang-\/tidy    \\\cline{1-5}
+Configurer Doxygen   &Choisir une convention de commentaires et générer la documentation du code.   &1   &F   &Doxygen    \\\cline{1-5}
+Réorganiser le dépôt   &Ranger le code en src/, include/, tests/ et docs/. Adapter le Makefile et le .gitignore.   &1   &F   &Make, Git    \\\cline{1-5}
+Tester les opérations matricielles existantes   &Couvrir création, accès, transposée, addition, produit terme à terme et produit matriciel.   &1   &M   &C, tests unitaires    \\\cline{1-5}
+Compléter la bibliothèque matricielle   &Ajouter soustraction, opérations scalaires et opérations en place, avec leurs tests. Documenter qui alloue et qui libère chaque matrice.   &1   &M   &C, gestion mémoire    \\\cline{1-5}
+Initialiser les poids   &Étudier puis implémenter les initialisations uniforme, normale, Xavier et He.   &1   &M   &C, probabilités    \\\cline{1-5}
+Publier v0.\+1   &Étiquette git, journal des changements, README à jour.   &1   &F   &Git, Git\+Hub   \\\cline{1-5}
+\end{longtabu}
+\hypertarget{md_project__ressources_2PLANNING_autotoc_md37}{}\doxysubsection{\texorpdfstring{S2, Propagation avant sur MNIST (mar 01/12 au mer 30/12)}{S2, Propagation avant sur MNIST (mar 01/12 au mer 30/12)}}\label{md_project__ressources_2PLANNING_autotoc_md37}
+Livraison \+: Chargement de MNIST et propagation avant complète.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endhead
+Étudier le format des fichiers MNIST   &Comprendre le format IDX et écrire un script de téléchargement des données. Les données ne sont pas versionnées.   &1   &F   &Formats binaires    \\\cline{1-5}
+Charger MNIST   &Lire images et étiquettes, normaliser les pixels, tester le chargeur.   &1   &M   &C, entrées-\/sorties binaires    \\\cline{1-5}
+Diagramme UML des structures de données   &Diagramme de classes des structures (matrice, couche, réseau) et de leurs liens. Préciser pour chaque structure qui alloue et qui libère la mémoire.   &1   &M   &UML, C    \\\cline{1-5}
+Implémenter la couche dense   &Structure de la couche et propagation avant.   &1   &M   &C, algèbre linéaire    \\\cline{1-5}
+Ajouter Re\+LU et softmax   &Fonctions d\textquotesingle{}activation et leurs dérivées, avec tests. Softmax doit rester stable numériquement.   &1   &M   &C, analyse numérique    \\\cline{1-5}
+Construire le réseau   &Empiler des couches et propager une entrée de bout en bout.   &1   &M   &C, structures de données    \\\cline{1-5}
+Implémenter les fonctions de perte   &Entropie croisée et erreur quadratique moyenne, avec tests.   &1   &M   &C, probabilités    \\\cline{1-5}
+Publier v0.\+2   &Étiquette git, journal des changements, README à jour.   &1   &F   &Git, Git\+Hub   \\\cline{1-5}
+\end{longtabu}
+\hypertarget{md_project__ressources_2PLANNING_autotoc_md38}{}\doxysubsection{\texorpdfstring{S3, Le réseau apprend (sam 02/01 au sam 30/01)}{S3, Le réseau apprend (sam 02/01 au sam 30/01)}}\label{md_project__ressources_2PLANNING_autotoc_md38}
+Livraison \+: Rétropropagation vérifiée et premier entraînement sur MNIST.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endhead
+Étudier la rétropropagation   &Dériver à la main les gradients d\textquotesingle{}un réseau à deux couches. Rédiger les notes dans docs/.   &1   &D   &Calcul différentiel    \\\cline{1-5}
+Diagramme UML de la boucle d\textquotesingle{}entraînement   &Diagramme d\textquotesingle{}activité \+: propagation avant, perte, propagation arrière, mise à jour des poids. Indiquer où sont stockés les gradients et à quel moment ils sont remis à zéro.   &1   &M   &UML    \\\cline{1-5}
+Implémenter la propagation arrière   &Gradients de la couche dense et des activations.   &1   &D   &C, calcul différentiel    \\\cline{1-5}
+Vérifier les gradients numériquement   &Comparer gradients analytiques et différences finies dans un test.   &1   &D   &C, analyse numérique    \\\cline{1-5}
+Écrire la boucle d\textquotesingle{}entraînement   &Mise à jour par descente de gradient, époques, mélange des données.   &1   &M   &C, optimisation    \\\cline{1-5}
+Entraîner sur MNIST pour la première fois   &Lancer un entraînement complet et journaliser perte et précision en CSV.   &1   &M   &C, expérimentation    \\\cline{1-5}
+Publier v0.\+3   &Étiquette git, journal des changements, README à jour.   &1   &F   &Git, Git\+Hub   \\\cline{1-5}
+\end{longtabu}
+\hypertarget{md_project__ressources_2PLANNING_autotoc_md39}{}\doxysubsection{\texorpdfstring{S4, Objectif de base atteint (lun 01/02 au sam 27/02)}{S4, Objectif de base atteint (lun 01/02 au sam 27/02)}}\label{md_project__ressources_2PLANNING_autotoc_md39}
+Livraison \+: Évaluation, courbes, CI et documentation \+: objectif de base atteint.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endhead
+Évaluer sur le jeu de test   &Précision sur le jeu de test et matrice de confusion.   &1   &M   &C, statistiques    \\\cline{1-5}
+Tracer les courbes d\textquotesingle{}entraînement   &Script Python avec matplotlib lisant les CSV produits par Lia.   &1   &F   &Python, matplotlib    \\\cline{1-5}
+Étudier l\textquotesingle{}intégration continue   &Comprendre le principe de la CI et le fonctionnement de Git\+Hub Actions.   &1   &F   &CI, Git\+Hub Actions    \\\cline{1-5}
+Mettre en place la CI   &Compiler, lancer les tests et les sanitizers à chaque push.   &1   &M   &Git\+Hub Actions, YAML    \\\cline{1-5}
+Ajouter les options de ligne de commande   &Aide, entraînement, test, nombre d\textquotesingle{}époques, taux d\textquotesingle{}apprentissage.   &1   &M   &C, argv    \\\cline{1-5}
+Mettre la documentation à jour   &README (utilisation), passe Doxygen, relecture des notes.   &1   &F   &Doxygen, Markdown    \\\cline{1-5}
+Publier v1.\+0   &Version de l\textquotesingle{}objectif de base \+: MLP entraîné et évalué sur MNIST.   &1   &F   &Git, Git\+Hub   \\\cline{1-5}
+\end{longtabu}
+\hypertarget{md_project__ressources_2PLANNING_autotoc_md40}{}\doxysubsection{\texorpdfstring{S5, Extension 3 \+: outils d\textquotesingle{}entraînement (1/2) (lun 01/03 au mer 31/03)}{S5, Extension 3 : outils d'entraînement (1/2) (lun 01/03 au mer 31/03)}}\label{md_project__ressources_2PLANNING_autotoc_md40}
+Livraison \+: Mini-\/lots, optimiseurs, sauvegarde du modèle, fichier de configuration.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endhead
+Étudier les optimiseurs   &Comprendre momentum et Adam, et ce qu\textquotesingle{}ils changent par rapport à la descente simple.   &1   &M   &Optimisation    \\\cline{1-5}
+Entraîner par mini-\/lots   &Traiter plusieurs exemples à la fois sous forme de matrices.   &1   &M   &C, algèbre linéaire    \\\cline{1-5}
+Implémenter momentum et Adam   &Ajouter les deux optimiseurs et comparer leurs courbes sur MNIST.   &1   &D   &C, optimisation    \\\cline{1-5}
+Sauvegarder et charger un modèle   &Format de fichier binaire pour les poids, avec tests aller-\/retour.   &1   &M   &C, entrées-\/sorties binaires    \\\cline{1-5}
+Lire un fichier de configuration   &Hyperparamètres lus depuis un fichier, sans recompiler.   &1   &M   &C, analyse de texte    \\\cline{1-5}
+Publier v1.\+1-\/beta   &Étiquette git, journal des changements, README à jour.   &1   &F   &Git, Git\+Hub   \\\cline{1-5}
+\end{longtabu}
+\hypertarget{md_project__ressources_2PLANNING_autotoc_md41}{}\doxysubsection{\texorpdfstring{S6, Extension 3 \+: outils d\textquotesingle{}entraînement (2/2) (sam 03/04 au mer 28/04)}{S6, Extension 3 : outils d'entraînement (2/2) (sam 03/04 au mer 28/04)}}\label{md_project__ressources_2PLANNING_autotoc_md41}
+Livraison \+: Régularisation, normalisation par lots, Fashion-\/\+MNIST.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endhead
+Étudier la régularisation   &Comprendre le surapprentissage, L2, dropout et la normalisation par lots.   &1   &M   &Apprentissage automatique    \\\cline{1-5}
+Ajouter L2 et dropout   &Implémenter les deux régularisations et mesurer leur effet.   &1   &M   &C    \\\cline{1-5}
+Implémenter la normalisation par lots   &Couche de normalisation par lots, propagation avant et arrière.   &1   &D   &C, calcul différentiel    \\\cline{1-5}
+Prendre en charge Fashion-\/\+MNIST   &Charger Fashion-\/\+MNIST et lancer les premières expériences.   &1   &F   &C, expérimentation    \\\cline{1-5}
+Publier v1.\+1   &Version de l\textquotesingle{}extension 3, avec un rapport d\textquotesingle{}expériences dans docs/.   &1   &F   &Git, rédaction   \\\cline{1-5}
+\end{longtabu}
+\hypertarget{md_project__ressources_2PLANNING_autotoc_md42}{}\doxysubsection{\texorpdfstring{S7, Extension 2 \+: performance (sam 01/05 au lun 31/05)}{S7, Extension 2 : performance (sam 01/05 au lun 31/05)}}\label{md_project__ressources_2PLANNING_autotoc_md42}
+Livraison \+: Profilage, optimisation du produit matriciel, Open\+MP, rapport de mesures.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endhead
+Étudier la hiérarchie mémoire et le profilage   &Comprendre caches, localité des données et principe du profilage.   &1   &M   &Architecture des ordinateurs    \\\cline{1-5}
+Écrire un banc de mesure   &Mesurer les temps de calcul de façon reproductible.   &1   &M   &C, mesure du temps    \\\cline{1-5}
+Profiler l\textquotesingle{}entraînement   &Identifier les fonctions les plus coûteuses avec un profileur.   &1   &M   &perf ou gprof    \\\cline{1-5}
+Optimiser le produit matriciel   &Ordre des boucles, disposition mémoire, découpage en blocs. Comparer chaque version à la version naïve.   &1   &D   &C, caches    \\\cline{1-5}
+Vectoriser avec SIMD   &Vectorisation par le compilateur, puis éventuellement à la main.   &1   &D   &C, SIMD    \\\cline{1-5}
+Paralléliser avec Open\+MP   &Répartir les opérations matricielles sur plusieurs cœurs.   &1   &M   &C, Open\+MP    \\\cline{1-5}
+Publier v1.\+2   &Version de l\textquotesingle{}extension 2, avec un rapport de mesures dans docs/.   &1   &F   &Git, rédaction   \\\cline{1-5}
+\end{longtabu}
+\hypertarget{md_project__ressources_2PLANNING_autotoc_md43}{}\doxysubsection{\texorpdfstring{S8, Extension 1 \+: CNN (1/2) (mar 01/06 au mer 30/06)}{S8, Extension 1 : CNN (1/2) (mar 01/06 au mer 30/06)}}\label{md_project__ressources_2PLANNING_autotoc_md43}
+Livraison \+: Interface de couche générique et propagation avant de la convolution.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endhead
+Étudier les convolutions   &Noyaux, pas, remplissage, canaux et taille des sorties.   &1   &M   &Traitement du signal    \\\cline{1-5}
+Diagramme UML de l\textquotesingle{}interface de couche   &Diagramme de classes des structures, mis à jour pour une interface de couche commune. Vérifier que couches denses, de pooling et de convolution s\textquotesingle{}y intègrent.   &1   &M   &UML    \\\cline{1-5}
+Rendre l\textquotesingle{}interface de couche générique   &Refactoriser les couches existantes derrière une interface commune.   &1   &D   &C, pointeurs de fonction    \\\cline{1-5}
+Gérer les tenseurs   &Formes à plusieurs dimensions dans la bibliothèque matricielle.   &1   &M   &C, gestion mémoire    \\\cline{1-5}
+Implémenter la propagation avant de la convolution   &Version naïve, avec tests sur de petits exemples calculés à la main.   &1   &D   &C    \\\cline{1-5}
+Publier v2.\+0-\/beta   &Étiquette git, journal des changements, README à jour.   &1   &F   &Git, Git\+Hub   \\\cline{1-5}
+\end{longtabu}
+\hypertarget{md_project__ressources_2PLANNING_autotoc_md44}{}\doxysubsection{\texorpdfstring{S9, Extension 1 \+: CNN (2/2) (sam 03/07 au sam 31/07)}{S9, Extension 1 : CNN (2/2) (sam 03/07 au sam 31/07)}}\label{md_project__ressources_2PLANNING_autotoc_md44}
+Livraison \+: CNN complet entraîné sur MNIST et Fashion-\/\+MNIST.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endhead
+Étudier la rétropropagation des convolutions   &Dériver les gradients par rapport aux noyaux et aux entrées.   &1   &D   &Calcul différentiel    \\\cline{1-5}
+Implémenter la propagation arrière de la convolution   &Gradients de la couche de convolution, vérifiés numériquement.   &1   &D   &C, calcul différentiel    \\\cline{1-5}
+Ajouter le max pooling   &Propagation avant et arrière, avec tests.   &1   &M   &C    \\\cline{1-5}
+Optimiser la convolution par im2col   &Ramener la convolution à un produit matriciel.   &1   &D   &C, algèbre linéaire    \\\cline{1-5}
+Entraîner un CNN   &Entraîner sur MNIST et Fashion-\/\+MNIST, comparer avec le MLP.   &1   &M   &C, expérimentation    \\\cline{1-5}
+Publier v2.\+0   &Version de l\textquotesingle{}extension 1 \+: réseau convolutif.   &1   &F   &Git, Git\+Hub   \\\cline{1-5}
+\end{longtabu}
+\hypertarget{md_project__ressources_2PLANNING_autotoc_md45}{}\doxysubsection{\texorpdfstring{S10, Comparaison finale (lun 02/08 au sam 21/08)}{S10, Comparaison finale (lun 02/08 au sam 21/08)}}\label{md_project__ressources_2PLANNING_autotoc_md45}
+Livraison \+: Comparaison avec Py\+Torch, rapport final, version finale.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tâche   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Pers.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diff.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Compétences    }\\\cline{1-5}
+\endhead
+Écrire les modèles de référence en Py\+Torch   &MLP et CNN de même architecture que dans Lia.   &1   &M   &Python, Py\+Torch    \\\cline{1-5}
+Comparer Lia et Py\+Torch   &Précision, temps d\textquotesingle{}entraînement et mémoire, dans les mêmes conditions.   &1   &M   &Expérimentation    \\\cline{1-5}
+Tester un CNN sur CIFAR-\/10   &Chargeur CIFAR-\/10 et expérience avec le CNN.   &1   &M   &C, expérimentation    \\\cline{1-5}
+Rédiger le rapport final   &Rapport dans docs/ et README final.   &1   &F   &Rédaction    \\\cline{1-5}
+Publier v2.\+1   &Version finale du projet.   &1   &F   &Git, Git\+Hub   \\\cline{1-5}
+\end{longtabu}
+\hypertarget{md_project__ressources_2PLANNING_autotoc_md46}{}\doxysection{\texorpdfstring{Diagrammes UML}{Diagrammes UML}}\label{md_project__ressources_2PLANNING_autotoc_md46}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diagramme   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Dates    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Diagramme   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Dates    }\\\cline{1-2}
+\endhead
+Diagramme UML des structures de données   &mar 08/12    \\\cline{1-2}
+Diagramme UML de la boucle d\textquotesingle{}entraînement   &mar 05/01    \\\cline{1-2}
+Diagramme UML de l\textquotesingle{}interface de couche   &lun 07/06   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_project__ressources_2PLANNING_autotoc_md47}{}\doxysection{\texorpdfstring{Gantt}{Gantt}}\label{md_project__ressources_2PLANNING_autotoc_md47}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{gantt}
+\DoxyCodeLine{\ \ \ \ title\ Lia}
+\DoxyCodeLine{\ \ \ \ dateFormat\ YYYY-\/MM-\/DD}
+\DoxyCodeLine{\ \ \ \ axisFormat\ \%d/\%m}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ section\ Étude}
+\DoxyCodeLine{\ \ \ \ Étudier\ les\ tests\ unitaires\ en\ C\ :t1\_2,\ 2026-\/10-\/17,\ 3d}
+\DoxyCodeLine{\ \ \ \ Étudier\ le\ format\ des\ fichiers\ MNIST\ :t2\_1,\ 2026-\/12-\/01,\ 1d}
+\DoxyCodeLine{\ \ \ \ Étudier\ la\ rétropropagation\ :t3\_1,\ 2027-\/01-\/02,\ 3d}
+\DoxyCodeLine{\ \ \ \ Étudier\ l'intégration\ continue\ :t4\_3,\ 2027-\/02-\/08,\ 1d}
+\DoxyCodeLine{\ \ \ \ Étudier\ les\ optimiseurs\ :t5\_1,\ 2027-\/03-\/01,\ 2d}
+\DoxyCodeLine{\ \ \ \ Étudier\ la\ régularisation\ :t6\_1,\ 2027-\/04-\/03,\ 3d}
+\DoxyCodeLine{\ \ \ \ Étudier\ la\ hiérarchie\ mémoire\ et\ le\ profilage\ :t7\_1,\ 2027-\/05-\/01,\ 3d}
+\DoxyCodeLine{\ \ \ \ Étudier\ les\ convolutions\ :t8\_1,\ 2027-\/06-\/01,\ 5d}
+\DoxyCodeLine{\ \ \ \ Étudier\ la\ rétropropagation\ des\ convolutions\ :t9\_1,\ 2027-\/07-\/03,\ 3d}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ section\ Outils}
+\DoxyCodeLine{\ \ \ \ Passer\ la\ compilation\ en\ C17\ :t1\_1,\ 2026-\/10-\/13,\ 2d}
+\DoxyCodeLine{\ \ \ \ Mettre\ en\ place\ le\ framework\ de\ tests\ :t1\_3,\ 2026-\/10-\/20,\ 2d}
+\DoxyCodeLine{\ \ \ \ Configurer\ clang-\/format\ et\ l'analyse\ statique\ :t1\_4,\ 2026-\/10-\/24,\ 3d}
+\DoxyCodeLine{\ \ \ \ Réorganiser\ le\ dépôt\ :t1\_6,\ 2026-\/10-\/28,\ 1d}
+\DoxyCodeLine{\ \ \ \ Tracer\ les\ courbes\ d'entraînement\ :t4\_2,\ 2027-\/02-\/03,\ 4d}
+\DoxyCodeLine{\ \ \ \ Mettre\ en\ place\ la\ CI\ :t4\_4,\ 2027-\/02-\/09,\ 2d}
+\DoxyCodeLine{\ \ \ \ Écrire\ un\ banc\ de\ mesure\ :t7\_2,\ 2027-\/05-\/04,\ 2d}
+\DoxyCodeLine{\ \ \ \ Profiler\ l'entraînement\ :t7\_3,\ 2027-\/05-\/08,\ 1d}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ section\ UML}
+\DoxyCodeLine{\ \ \ \ Diagramme\ UML\ des\ structures\ de\ données\ :t2\_3,\ 2026-\/12-\/08,\ 1d}
+\DoxyCodeLine{\ \ \ \ Diagramme\ UML\ de\ la\ boucle\ d'entraînement\ :t3\_2,\ 2027-\/01-\/05,\ 1d}
+\DoxyCodeLine{\ \ \ \ Diagramme\ UML\ de\ l'interface\ de\ couche\ :t8\_2,\ 2027-\/06-\/07,\ 1d}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ section\ Code}
+\DoxyCodeLine{\ \ \ \ Compléter\ la\ bibliothèque\ matricielle\ :t1\_8,\ 2026-\/11-\/04,\ 6d}
+\DoxyCodeLine{\ \ \ \ Initialiser\ les\ poids\ :t1\_9,\ 2026-\/11-\/10,\ 2d}
+\DoxyCodeLine{\ \ \ \ Charger\ MNIST\ :t2\_2,\ 2026-\/12-\/02,\ 6d}
+\DoxyCodeLine{\ \ \ \ Implémenter\ la\ couche\ dense\ :t2\_4,\ 2026-\/12-\/09,\ 6d}
+\DoxyCodeLine{\ \ \ \ Ajouter\ ReLU\ et\ softmax\ :t2\_5,\ 2026-\/12-\/15,\ 2d}
+\DoxyCodeLine{\ \ \ \ Construire\ le\ réseau\ :t2\_6,\ 2026-\/12-\/19,\ 3d}
+\DoxyCodeLine{\ \ \ \ Implémenter\ les\ fonctions\ de\ perte\ :t2\_7,\ 2026-\/12-\/22,\ 1d}
+\DoxyCodeLine{\ \ \ \ Implémenter\ la\ propagation\ arrière\ :t3\_3,\ 2027-\/01-\/06,\ 6d}
+\DoxyCodeLine{\ \ \ \ Écrire\ la\ boucle\ d'entraînement\ :t3\_5,\ 2027-\/01-\/16,\ 3d}
+\DoxyCodeLine{\ \ \ \ Entraîner\ sur\ MNIST\ pour\ la\ première\ fois\ :t3\_6,\ 2027-\/01-\/19,\ 2d}
+\DoxyCodeLine{\ \ \ \ Évaluer\ sur\ le\ jeu\ de\ test\ :t4\_1,\ 2027-\/02-\/01,\ 2d}
+\DoxyCodeLine{\ \ \ \ Ajouter\ les\ options\ de\ ligne\ de\ commande\ :t4\_5,\ 2027-\/02-\/13,\ 3d}
+\DoxyCodeLine{\ \ \ \ Entraîner\ par\ mini-\/lots\ :t5\_2,\ 2027-\/03-\/03,\ 6d}
+\DoxyCodeLine{\ \ \ \ Implémenter\ momentum\ et\ Adam\ :t5\_3,\ 2027-\/03-\/09,\ 5d}
+\DoxyCodeLine{\ \ \ \ Sauvegarder\ et\ charger\ un\ modèle\ :t5\_4,\ 2027-\/03-\/15,\ 3d}
+\DoxyCodeLine{\ \ \ \ Lire\ un\ fichier\ de\ configuration\ :t5\_5,\ 2027-\/03-\/20,\ 3d}
+\DoxyCodeLine{\ \ \ \ Ajouter\ L2\ et\ dropout\ :t6\_2,\ 2027-\/04-\/06,\ 5d}
+\DoxyCodeLine{\ \ \ \ Implémenter\ la\ normalisation\ par\ lots\ :t6\_3,\ 2027-\/04-\/12,\ 3d}
+\DoxyCodeLine{\ \ \ \ Prendre\ en\ charge\ Fashion-\/MNIST\ :t6\_4,\ 2027-\/04-\/17,\ 3d}
+\DoxyCodeLine{\ \ \ \ Optimiser\ le\ produit\ matriciel\ :t7\_4,\ 2027-\/05-\/10,\ 3d}
+\DoxyCodeLine{\ \ \ \ Vectoriser\ avec\ SIMD\ :t7\_5,\ 2027-\/05-\/15,\ 3d}
+\DoxyCodeLine{\ \ \ \ Paralléliser\ avec\ OpenMP\ :t7\_6,\ 2027-\/05-\/18,\ 2d}
+\DoxyCodeLine{\ \ \ \ Rendre\ l'interface\ de\ couche\ générique\ :t8\_3,\ 2027-\/06-\/08,\ 5d}
+\DoxyCodeLine{\ \ \ \ Gérer\ les\ tenseurs\ :t8\_4,\ 2027-\/06-\/14,\ 2d}
+\DoxyCodeLine{\ \ \ \ Implémenter\ la\ propagation\ avant\ de\ la\ convolution\ :t8\_5,\ 2027-\/06-\/16,\ 6d}
+\DoxyCodeLine{\ \ \ \ Implémenter\ la\ propagation\ arrière\ de\ la\ convolution\ :t9\_2,\ 2027-\/07-\/06,\ 5d}
+\DoxyCodeLine{\ \ \ \ Ajouter\ le\ max\ pooling\ :t9\_3,\ 2027-\/07-\/12,\ 2d}
+\DoxyCodeLine{\ \ \ \ Optimiser\ la\ convolution\ par\ im2col\ :t9\_4,\ 2027-\/07-\/14,\ 4d}
+\DoxyCodeLine{\ \ \ \ Entraîner\ un\ CNN\ :t9\_5,\ 2027-\/07-\/19,\ 2d}
+\DoxyCodeLine{\ \ \ \ Tester\ un\ CNN\ sur\ CIFAR-\/10\ :t10\_3,\ 2027-\/08-\/09,\ 2d}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ section\ Tests}
+\DoxyCodeLine{\ \ \ \ Tester\ les\ opérations\ matricielles\ existantes\ :t1\_7,\ 2026-\/10-\/31,\ 4d}
+\DoxyCodeLine{\ \ \ \ Vérifier\ les\ gradients\ numériquement\ :t3\_4,\ 2027-\/01-\/12,\ 2d}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ section\ Documentation}
+\DoxyCodeLine{\ \ \ \ Configurer\ Doxygen\ :t1\_5,\ 2026-\/10-\/27,\ 1d}
+\DoxyCodeLine{\ \ \ \ Mettre\ la\ documentation\ à\ jour\ :t4\_6,\ 2027-\/02-\/16,\ 2d}
+\DoxyCodeLine{\ \ \ \ Rédiger\ le\ rapport\ final\ :t10\_4,\ 2027-\/08-\/11,\ 4d}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ section\ Comparaison}
+\DoxyCodeLine{\ \ \ \ Écrire\ les\ modèles\ de\ référence\ en\ PyTorch\ :t10\_1,\ 2027-\/08-\/02,\ 2d}
+\DoxyCodeLine{\ \ \ \ Comparer\ Lia\ et\ PyTorch\ :t10\_2,\ 2027-\/08-\/04,\ 4d}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ section\ Livraison}
+\DoxyCodeLine{\ \ \ \ Publier\ v0.1\ :t1\_10,\ 2026-\/11-\/28,\ 3d}
+\DoxyCodeLine{\ \ \ \ Publier\ v0.2\ :t2\_8,\ 2026-\/12-\/30,\ 1d}
+\DoxyCodeLine{\ \ \ \ Publier\ v0.3\ :t3\_7,\ 2027-\/01-\/30,\ 1d}
+\DoxyCodeLine{\ \ \ \ Publier\ v1.0\ :t4\_7,\ 2027-\/02-\/27,\ 1d}
+\DoxyCodeLine{\ \ \ \ Publier\ v1.1-\/beta\ :t5\_6,\ 2027-\/03-\/31,\ 1d}
+\DoxyCodeLine{\ \ \ \ Publier\ v1.1\ :t6\_5,\ 2027-\/04-\/27,\ 2d}
+\DoxyCodeLine{\ \ \ \ Publier\ v1.2\ :t7\_7,\ 2027-\/05-\/29,\ 3d}
+\DoxyCodeLine{\ \ \ \ Publier\ v2.0-\/beta\ :t8\_6,\ 2027-\/06-\/30,\ 1d}
+\DoxyCodeLine{\ \ \ \ Publier\ v2.0\ :t9\_6,\ 2027-\/07-\/31,\ 1d}
+\DoxyCodeLine{\ \ \ \ Publier\ v2.1\ :t10\_5,\ 2027-\/08-\/21,\ 1d}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ section\ Livrables}
+\DoxyCodeLine{\ \ \ \ v0.1\ :milestone,\ m0,\ 2026-\/11-\/30,\ 0d}
+\DoxyCodeLine{\ \ \ \ v0.2\ :milestone,\ m1,\ 2026-\/12-\/30,\ 0d}
+\DoxyCodeLine{\ \ \ \ v0.3\ :milestone,\ m2,\ 2027-\/01-\/30,\ 0d}
+\DoxyCodeLine{\ \ \ \ v1.0\ :milestone,\ m3,\ 2027-\/02-\/27,\ 0d}
+\DoxyCodeLine{\ \ \ \ v1.1-\/beta\ :milestone,\ m4,\ 2027-\/03-\/31,\ 0d}
+\DoxyCodeLine{\ \ \ \ v1.1\ :milestone,\ m5,\ 2027-\/04-\/28,\ 0d}
+\DoxyCodeLine{\ \ \ \ v1.2\ :milestone,\ m6,\ 2027-\/05-\/31,\ 0d}
+\DoxyCodeLine{\ \ \ \ v2.0-\/beta\ :milestone,\ m7,\ 2027-\/06-\/30,\ 0d}
+\DoxyCodeLine{\ \ \ \ v2.0\ :milestone,\ m8,\ 2027-\/07-\/31,\ 0d}
+\DoxyCodeLine{\ \ \ \ v2.1\ :milestone,\ m9,\ 2027-\/08-\/21,\ 0d}
+
+\end{DoxyCode}
+\hypertarget{md_project__ressources_2PLANNING_autotoc_md48}{}\doxysection{\texorpdfstring{Bonnes pratiques}{Bonnes pratiques}}\label{md_project__ressources_2PLANNING_autotoc_md48}
+
+\begin{DoxyItemize}
+\item Une branche courte par issue, fusionnée dans main.
+\item Messages de commit qui référencent l\textquotesingle{}issue (closes \#12).
+\item make test doit passer avant chaque fusion ; à partir de v1.\+0, la CI le vérifie.
+\item Une étiquette git par milestone, avec un journal des changements.
+\item Chaque tâche d\textquotesingle{}étude produit des notes en français dans docs/.
+\item Les données (MNIST, Fashion-\/\+MNIST, CIFAR-\/10) ne sont pas versionnées \+: un script les télécharge.
+\end{DoxyItemize}\hypertarget{md_project__ressources_2PLANNING_autotoc_md49}{}\doxysection{\texorpdfstring{Points ouverts}{Points ouverts}}\label{md_project__ressources_2PLANNING_autotoc_md49}
+
+\begin{DoxyItemize}
+\item Numéro du Project Git\+Hub à fournir au lancement (option --project-\/number) ou à renseigner dans plan.\+json (project.\+github\+\_\+project.\+number).
+\item Choix du framework de tests (issue 1.\+2).
+\item Choix pour M\+\_\+\+PI en C17 \+: constante propre, -\/D\+\_\+\+DEFAULT\+\_\+\+SOURCE ou -\/std=gnu17 (issue 1.\+1).
+\item Environnement Python pour matplotlib (S4) et Py\+Torch (S10). 
+\end{DoxyItemize}
