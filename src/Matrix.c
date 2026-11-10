@@ -251,6 +251,30 @@ void mat_map(matrix *A, double (*f)(double)) {
   for (i = 0; i < A->rows * A->cols; i++) A->data[i] = f(A->data[i]);
 }
 
+/*!
+   \brief Substracts two matrices element by element. Order counts.
+
+   \param A First matrix.
+   \param B Second matrix.
+
+   \return A pointer to the new matrix A - B.
+
+   Stops the program if the dimensions are different.
+ */
+matrix* mat_sub(matrix* A, matrix* B) {
+    if (A->rows != B->rows || A->cols != B->cols)
+    FATAL_ERROR("Uncompatible dimensions.");
+
+  matrix *C = create_matrix(A->rows, A->cols);
+  int k;
+
+  for (k = 0; k < A->rows * A->cols; k++) C->data[k] = A->data[k] - B->data[k];
+
+  C->last_available = C->rows * C->cols;
+
+  return C;
+}
+
 /* === AFFICHAGE === */
 
 /*!
