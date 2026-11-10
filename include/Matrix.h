@@ -41,6 +41,12 @@ matrix* mat_smult(matrix* A, double k);
 
 matrix* mat_sadd(matrix* A, double k);
 
+void mat_add_inplace(matrix* A, matrix* B);
+
+void mat_sub_inplace(matrix* A, matrix* B);
+
+void mat_smult_inplace(matrix* A, double k);
+
 /* === AFFICHAGE === */
 void display_matrix(matrix* mat);
 

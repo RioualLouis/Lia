@@ -315,6 +315,56 @@ matrix* mat_sadd(matrix* A, double k) {
   return C;
 }
 
+/*!
+   \brief In place addition of two matrix.
+
+   \param A First matrix.
+   \param B Second matrix.
+
+   Stops the program if the dimensions are different.
+ */
+void mat_add_inplace(matrix* A, matrix* B) {
+    if (A->rows != B->rows || A->cols != B->cols)
+    FATAL_ERROR("Uncompatible dimensions.");
+
+  int k;
+
+  for (k = 0; k < A->rows * A->cols; k++) A->data[k] += B->data[k];
+
+  if (A->last_available < B->last_available) A->last_available = B->last_available;
+}
+
+/*!
+   \brief In place substraction of two matrix.
+
+   \param A First matrix.
+   \param B Second matrix.
+
+   Stops the program if the dimensions are different.
+ */
+void mat_sub_inplace(matrix* A, matrix* B) {
+    if (A->rows != B->rows || A->cols != B->cols)
+    FATAL_ERROR("Uncompatible dimensions.");
+
+  int k;
+
+  for (k = 0; k < A->rows * A->cols; k++) A->data[k] -= B->data[k];
+
+    if (A->last_available < B->last_available) A->last_available = B->last_available;
+}
+
+/*!
+   \brief In place multiplication of a matrix by a scalar.
+
+   \param A Matrix.
+   \param B Scalar.
+ */
+void mat_smult_inplace(matrix* A, double k) {
+  int l;
+
+  for (l = 0; l < A->rows * A->cols; l++) A->data[l] *= k;
+}
+
 
 
 /* === AFFICHAGE === */
