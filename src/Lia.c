@@ -15,16 +15,21 @@
 #include "Network.h"
 
 /*!
-   \brief Displays the version, the welcome message and the available options.
+   \brief Displays the version, the welcome message.
  */
 static void display_banner() {
   printf("Lia V.0.0.0\n\n");
 
   printf("%sWelcome to %sLia\n", BOLD, RED);
   printf("%sA neural network built in C\n\n", DEFAULT);
+}
 
-  printf("Available options:\n");
-  printf("-h : Displays help.\n");
+/*!
+  \brief Displays correct usage and help access.
+*/
+static void display_no_args() {
+  printf("Usage : %slia [-OPTIONS]\n", BOLD);
+  printf("%sUse option -h to display help.\n", DEFAULT);
 }
 
 /*!
@@ -34,14 +39,25 @@ static void display_banner() {
    \param argv Array of command line arguments.
 
    \return 0 if the program ends normally.
+
+   Displays different views according to the arguments input with the fonction in command line.
  */
 int lia_main(int argc, char *argv[]) {
   srand(time(NULL)); /* Initialiser la génération de nombres aléatoires */
 
   display_banner();
 
-  int nb_param = argc;
-  if (strcmp(argv[1], "-h") == 0) printf("Help Required T-T\n");
+  switch (argc) {
+  case 1 :
+      display_no_args();
+      break;
+  case 2 :
+      if (strcmp(argv[1], "-h") == 0) printf("Help Required T-T\n");
+      break;
+  default :
+      printf("Placeholder\n");
+      break;
+  }
 
   return 0;
 }
