@@ -3,17 +3,10 @@
 
 #define FATAL_ERROR(CAUSE) fatal_error(__FILE__, __LINE__, #CAUSE)
 
-void fatal_error(char* file, int line, char* causes);
+void fatal_error(const char* file, int line, const char* causes);
 
-enum errors {
-    TYPE,
-    ARITY,
-    NAME,
-    DIVISION_BY_ZERO,
-    SYNTAXE,
-    RUNTIME
-};
+enum errors { TYPE, ARITY, NAME, DIVISION_BY_ZERO, SYNTAXE, RUNTIME };
 
-void error(enum errors type, char* function, char* explanation);
+void error(enum errors type, const char* function, const char* explanation);
 
 #endif

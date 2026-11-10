@@ -3,12 +3,12 @@
    Contains everything related to error handling and error messages.
 */
 
-#include "include/error.h"
+#include "Error.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "include/colors.h"
+#include "Colors.h"
 
 /*!
    \brief Displays an error message and stops the program.
@@ -19,7 +19,7 @@
 
    To use during development.
  */
-void fatal_error(char *file, int line, char *causes) {
+void fatal_error(const char *file, int line, const char *causes) {
   /* À utiliser pour le développement */
   fprintf(stderr, "%s", RED);
   fprintf(stderr, "\n   /!\\ Fatal Error /!\\");
@@ -29,8 +29,8 @@ void fatal_error(char *file, int line, char *causes) {
   exit(1);
 }
 
-char *taberror[] = {"TYPE",    "ARITY",  "NAME", "DIVISION_BY_ZERO",
-                    "SYNTAXE", "RUNTIME"};
+static const char *taberror[] = {
+    "TYPE", "ARITY", "NAME", "DIVISION_BY_ZERO", "SYNTAXE", "RUNTIME"};
 
 /*!
    \brief Displays an error message to the user.
@@ -41,7 +41,7 @@ char *taberror[] = {"TYPE",    "ARITY",  "NAME", "DIVISION_BY_ZERO",
 
    Unlike fatal_error(), the program does not stop.
  */
-void erreur(enum errors type, char *function, char *explanation) {
+void error(enum errors type, const char *function, const char *explanation) {
   /* À utiliser pour communiquer avec l'utilisateur. */
   printf("%s", RED);
 

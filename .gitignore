@@ -35,6 +35,8 @@
 *.i*86
 *.x86_64
 *.hex
+build/
+test/Test*
 
 # Debug files
 *.dSYM/
@@ -59,7 +61,7 @@ project_ressources/bibliography.md
 
 # Project organisation files
 PLANNING.md
-docs/ROADMAP.md
+docs/
 kickoff.py
 plan.json
 .kickoff-state.json
