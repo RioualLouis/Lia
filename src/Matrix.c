@@ -186,7 +186,7 @@ matrix *mat_add(matrix *A, matrix *B) {
 
    \return A pointer to the new matrix.
 
-   Stops the program if the dimensions are different.
+   Unlike Numpy, mat_dot is an element by element multiplication. Use mat_mult() for regular matrix operation. Stops the program if the dimensions are different.
  */
 matrix *mat_dot(matrix *A, matrix *B) {
   matrix *C = create_matrix(A->rows, A->cols);
@@ -278,7 +278,7 @@ matrix* mat_sub(matrix* A, matrix* B) {
 /*!
    \brief Multiply every element of a matrix with a scalar. Returns new matrix.
 
-   \param A First matrix.
+   \param A Matrix.
    \param k Scalar.
 
    \return A pointer to the new matrix k * A.
@@ -294,6 +294,28 @@ matrix* mat_smult(matrix* A, double k) {
   C->last_available = C->rows * C->cols;
   return C;
 }
+
+/*!
+   \brief Add a scalar to every element of a matrix. Returns new matrix.
+
+   \param A Matrix.
+   \param k Scalar.
+
+   \return A pointer to the new matrix A + k.
+
+   To be free with free_matrix().
+ */
+matrix* mat_sadd(matrix* A, double k) {
+    matrix *C = create_matrix(A->rows, A->cols);
+  int l;
+
+  for (l = 0; l < A->rows * A->cols; l++) C->data[l] = A->data[l] + k;
+
+  C->last_available = C->rows * C->cols;
+  return C;
+}
+
+
 
 /* === AFFICHAGE === */
 
