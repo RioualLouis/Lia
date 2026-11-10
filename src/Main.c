@@ -3,9 +3,7 @@
    Entry point of the program.
 */
 
-#include <stdio.h>
-
-#include "include/lia.h"
+#include "Lia.h"
 
 /*!
    \brief Entry point of the program.

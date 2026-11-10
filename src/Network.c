@@ -3,10 +3,12 @@
    Contains everything related to the neural network.
 */
 
+#include "Network.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "include/activation.h"
+#include "Activation.h"
 
 /*!
    \brief A first network implementation.
