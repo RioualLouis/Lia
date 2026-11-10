@@ -38,6 +38,7 @@ void mat_map(matrix* A, double (*f)(double));
 /* === AFFICHAGE === */
 void display_matrix(matrix* mat);
 
+
 void display_raw(matrix* mat);
 
 /* === TESTING === */

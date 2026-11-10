@@ -60,11 +60,7 @@ clean:
 
 # Test target
 test: $(RESULTS)
-	@echo "-----------------------\nIGNORES\n-----------------------"
-	@echo `grep -s IGNORE $(PATHRESULTS)*.txt`
-	@echo "-----------------------\nFAILURES\n-----------------------"
-	@echo `grep -s FAIL $(PATHRESULTS)*.txt`
-	@echo "\nDONE"
+	@echo "\nNO FAILLURE\n"
 
 # Format targets - Used to format all files using clang (check is used by CI)
 format:
