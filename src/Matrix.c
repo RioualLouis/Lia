@@ -259,7 +259,7 @@ void mat_map(matrix *A, double (*f)(double)) {
 
    \return A pointer to the new matrix A - B.
 
-   Stops the program if the dimensions are different.
+   Stops the program if the dimensions are different. To be free with free_matrix().
  */
 matrix* mat_sub(matrix* A, matrix* B) {
     if (A->rows != B->rows || A->cols != B->cols)
@@ -272,6 +272,26 @@ matrix* mat_sub(matrix* A, matrix* B) {
 
   C->last_available = C->rows * C->cols;
 
+  return C;
+}
+
+/*!
+   \brief Multiply every element of a matrix with a scalar. Returns new matrix.
+
+   \param A First matrix.
+   \param k Scalar.
+
+   \return A pointer to the new matrix k * A.
+
+   To be free with free_matrix().
+ */
+matrix* mat_smult(matrix* A, double k) {
+    matrix *C = create_matrix(A->rows, A->cols);
+  int l;
+
+  for (l = 0; l < A->rows * A->cols; l++) C->data[l] = A->data[l] * k;
+
+  C->last_available = C->rows * C->cols;
   return C;
 }
 

@@ -37,6 +37,8 @@ void mat_map(matrix* A, double (*f)(double));
 
 matrix* mat_sub(matrix* A, matrix* B);
 
+matrix* mat_smult(matrix* A, double k);
+
 /* === AFFICHAGE === */
 void display_matrix(matrix* mat);
 
